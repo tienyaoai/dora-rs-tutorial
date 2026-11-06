@@ -1,0 +1,18 @@
+# Rust / dora build artifacts
+target/
+out/
+
+# Secrets and local config
+.env
+.env.*
+*.pem
+*.key
+
+# Editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Logs (not part of tutorial deliverables)
+*.log

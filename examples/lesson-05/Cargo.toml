@@ -1,0 +1,9 @@
+[package]
+name = "lesson-05"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# arrow-v59 這個 feature 會把 dora 內部使用的 Arrow 以 dora_node_api::arrow_v59 重新匯出
+dora-node-api = { version = "1.1.0", features = ["arrow-v59"] }
+eyre = "0.6"

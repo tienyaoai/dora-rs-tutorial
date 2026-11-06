@@ -1,0 +1,14 @@
+nodes:
+  - id: talker
+    build: cargo build --bin talker
+    path: target/debug/talker
+    inputs:
+      tick: dora/timer/millis/500   # 每 500 毫秒觸發一次
+    outputs:
+      - greeting
+
+  - id: listener
+    build: cargo build --bin listener
+    path: target/debug/listener
+    inputs:
+      greeting: talker/greeting
