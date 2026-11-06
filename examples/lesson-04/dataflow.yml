@@ -1,0 +1,24 @@
+nodes:
+  - id: sensor
+    description: 模擬感測器：送 8 筆讀數，第 4 筆後故意停頓 1.5 秒
+    build: cargo build --bin sensor
+    path: target/debug/sensor
+    outputs:
+      - reading
+
+  - id: stats
+    description: 第一個「完整」的 Rust 節點：累計讀數、每秒送一次摘要
+    build: cargo build --bin stats
+    path: target/debug/stats
+    inputs:
+      reading: sensor/reading
+      report: dora/timer/millis/1000
+    outputs:
+      - summary
+
+  - id: printer
+    description: 印出 stats 的摘要
+    build: cargo build --bin printer
+    path: target/debug/printer
+    inputs:
+      summary: stats/summary

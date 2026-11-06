@@ -1,0 +1,20 @@
+nodes:
+  - id: producer
+    description: 一次示範四種送法：純量＋metadata、Vec<f32>、結構化表格、只有 metadata
+    build: cargo build --bin producer
+    path: target/debug/producer
+    outputs:
+      - temperature
+      - waveform
+      - table
+      - ping
+
+  - id: consumer
+    description: 把四種資料各自讀回來，並展示型別不對時的錯誤
+    build: cargo build --bin consumer
+    path: target/debug/consumer
+    inputs:
+      temperature: producer/temperature
+      waveform: producer/waveform
+      table: producer/table
+      ping: producer/ping

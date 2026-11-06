@@ -1,0 +1,16 @@
+nodes:
+  - id: ticker
+    description: 每 500ms 送出一個遞增的 u64 計數（故意長跑，不會自己結束）
+    build: cargo build --bin ticker
+    path: target/debug/ticker
+    inputs:
+      tick: dora/timer/millis/500
+    outputs:
+      - count
+
+  - id: printer
+    description: 印出 ticker 的計數
+    build: cargo build --bin printer
+    path: target/debug/printer
+    inputs:
+      count: ticker/count

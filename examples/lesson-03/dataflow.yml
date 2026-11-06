@@ -1,0 +1,30 @@
+# 全資料流共用的環境變數（每個節點都會拿到）
+env:
+  RUST_LOG: info
+
+nodes:
+  - id: producer
+    description: 每 300 ms 送一句問候，送滿 MAX_MSGS 則就結束
+    build: cargo build --bin producer
+    path: target/debug/producer
+    args: --prefix "[A] "
+    env:
+      GREETING: "哈囉"
+      MAX_MSGS: 4          # 數字也可以，dora 會轉成字串
+    inputs:
+      tick: dora/timer/millis/300
+    outputs:
+      - text
+    output_types:
+      text: std/core/v1/String
+
+  - id: consumer
+    description: 印出收到的每一則文字
+    build: cargo build --bin consumer
+    path: target/debug/consumer
+    inputs:
+      text:                       # 長寫法：可以加每個輸入的選項
+        source: producer/text
+        queue_size: 10            # 這個輸入最多排 10 則，超過丟最舊的
+    input_types:
+      text: std/core/v1/String
