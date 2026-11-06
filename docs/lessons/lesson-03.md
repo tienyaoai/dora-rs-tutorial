@@ -3,7 +3,18 @@
 > 版本：dora v1.1.0（CLI 與 `dora-node-api` 同版）　驗證日期：2026-11-03（台北時間），x86_64 Linux 上實際 `dora validate` / `dora build` / `dora run` 成功（結束碼 0）。
 
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 2 篇](lesson-02.md) · [第 4 篇 →](lesson-04.md) · **範例：** [examples/lesson-03/](../../examples/lesson-03/)
+- [返回教材總覽](../../README.md)
+- 上一課：[第 2 篇](lesson-02.md)
+- 下一課：[第 4 篇 →](lesson-04.md)
+- 本課範例：[examples/lesson-03/](../../examples/lesson-03/)
+
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 2 篇](lesson-02.md)
+- 下一課：[第 4 篇 →](lesson-04.md)
+- 本課範例：[examples/lesson-03/](../../examples/lesson-03/)
+
 ## 目錄
 
 - [重點說明](#重點說明)
@@ -15,26 +26,22 @@
 
 ### 1. 最外層（整個資料流）
 
-| 欄位 | 用途 |
-|---|---|
-| `nodes:` | 節點清單（必填） |
-| `env:` | 全資料流共用的環境變數，每個節點都會拿到 |
-| `strict_types: true` | 型別宣告不符就當作錯誤（見第 5 節） |
-| `health_check_interval` / `exit_when_nodes_finish` / `type_rules` | 進階選項，之後的篇章再碰 |
+- **`nodes:`** — 節點清單（必填）
+- **`env:`** — 全資料流共用的環境變數，每個節點都會拿到
+- **`strict_types: true`** — 型別宣告不符就當作錯誤（見第 5 節）
+- **`health_check_interval` / `exit_when_nodes_finish` / `type_rules`** — 進階選項，之後的篇章再碰
 
 ### 2. 每個節點最常用的欄位
 
-| 欄位 | 說明 |
-|---|---|
-| `id` | 節點名稱，**不能含 `/`**（因為 `節點/輸出` 用 `/` 分隔） |
-| `description` | 給人看的說明，`dora graph` 會畫出來 |
-| `build` | `dora build` 時執行的指令，**每一行是獨立的一個指令**，以空白分隔參數 |
-| `path` | 要執行的程式；相對路徑是相對於 **YAML 檔所在目錄** |
-| `args` | 傳給程式的命令列參數，以空白分隔，引號可用（實測 `--prefix "[A] "` 會被正確當成一個參數） |
-| `env` | 這個節點的環境變數，**`build` 與執行時都會套用**；值可以是字串、數字、布林 |
-| `inputs` | 輸入：`本地名稱: 來源` |
-| `outputs` | 這個節點會送出的輸出名稱清單 |
-| `input_types` / `output_types` | 選填的型別宣告（只做檢查，不影響執行） |
+- **`id`** — 節點名稱，**不能含 `/`**（因為 `節點/輸出` 用 `/` 分隔）
+- **`description`** — 給人看的說明，`dora graph` 會畫出來
+- **`build`** — `dora build` 時執行的指令，**每一行是獨立的一個指令**，以空白分隔參數
+- **`path`** — 要執行的程式；相對路徑是相對於 **YAML 檔所在目錄**
+- **`args`** — 傳給程式的命令列參數，以空白分隔，引號可用（實測 `--prefix "[A] "` 會被正確當成一個參數）
+- **`env`** — 這個節點的環境變數，**`build` 與執行時都會套用**；值可以是字串、數字、布林
+- **`inputs`** — 輸入：`本地名稱: 來源`
+- **`outputs`** — 這個節點會送出的輸出名稱清單
+- **`input_types` / `output_types`** — 選填的型別宣告（只做檢查，不影響執行）
 
 另外還有一批「讓節點更穩」的欄位，會在後面的篇章用到：`restart_policy`（`never` / `on-failure` / `always`）搭配 `max_restarts`、`restart_delay`（第 9 篇）、`queue_size` / `queue_policy`（第 8 篇）、`health_check_timeout`、`cpu_affinity`、`send_stdout_as`、`git` / `branch` / `tag` / `rev`（從 git 抓節點原始碼，第 14 篇分散式會用到）。
 
@@ -278,4 +285,9 @@ dora run dataflow.yml
 
 ---
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 2 篇](lesson-02.md) · [第 4 篇 →](lesson-04.md) · **範例：** [examples/lesson-03/](../../examples/lesson-03/)
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 2 篇](lesson-02.md)
+- 下一課：[第 4 篇 →](lesson-04.md)
+- 本課範例：[examples/lesson-03/](../../examples/lesson-03/)

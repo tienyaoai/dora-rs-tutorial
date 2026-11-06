@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-06 — 閱讀版面修整（文件 only）
+
+- 六課與 `README.md`：將不適合小螢幕的寬表格改為分組條列／短段落（技術內容、程式、練習均保留）。
+- 各課導覽改為多行清單（返回總覽、上一課／下一課、範例）；目錄 anchor 與 GitHub 標題 slug 對齊。
+- 新增 `scripts/check-markdown-nav.py`、`scripts/refresh-lesson-nav.py` 供連結／導覽檢查。
+- **範例程式未變**；`cargo check` / `dora validate` 結果仍沿用初版提交（commit `78ef920`）之程式版本。
+
 ## 2026-11-06 — 初版公開整理
 
 - 新增 6 篇完整繁中教材（`docs/lessons/lesson-01.md`～`lesson-06.md`），含導覽、目錄與 repo 相對連結。

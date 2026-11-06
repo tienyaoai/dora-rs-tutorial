@@ -3,7 +3,18 @@
 > 版本：dora v1.1.0（CLI 與 `dora-node-api` 同版）　驗證日期：2026-11-04（台北時間），x86_64 Linux 上實際 `dora validate` / `dora build` / `dora run` 成功（結束碼 0）。
 
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 3 篇](lesson-03.md) · [第 5 篇 →](lesson-05.md) · **範例：** [examples/lesson-04/](../../examples/lesson-04/)
+- [返回教材總覽](../../README.md)
+- 上一課：[第 3 篇](lesson-03.md)
+- 下一課：[第 5 篇 →](lesson-05.md)
+- 本課範例：[examples/lesson-04/](../../examples/lesson-04/)
+
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 3 篇](lesson-03.md)
+- 下一課：[第 5 篇 →](lesson-05.md)
+- 本課範例：[examples/lesson-04/](../../examples/lesson-04/)
+
 ## 目錄
 
 - [重點說明](#重點說明)
@@ -29,15 +40,40 @@ while let Some(event) = events.recv() {                    // ② 事件迴圈
 
 ### 2. `Event` 有哪些種類
 
-| 事件 | 什麼時候來 | 你通常怎麼處理 |
-|---|---|---|
-| `Input { id, metadata, data }` | 某個輸入來資料。`id` 是**你在 YAML 裡取的輸入名稱**，不是上游的輸出名稱 | 依 `id` 分派；`data` 是 Arrow 陣列 |
-| `InputClosed { id }` | 該輸入的上游節點結束了，不會再有資料 | 清理狀態；若這是唯一資料來源就收工 |
-| `Stop(cause)` | 事件串流即將關閉。`cause` 是 `Manual`（`dora stop` / Ctrl-C，要盡快退出）或 `AllInputsClosed`（所有輸入都關了） | 跳出迴圈 |
-| `Error(msg)` | dora 內部錯誤，**以及 `recv_timeout` 逾時** | 印出來；不要直接當成致命錯誤 |
-| `NodeFailed { .. }` / `NodeRestarted { id }` / `InputRecovered { id }` | 上游節點失敗、重啟、恢復（搭配重啟策略，第 9 篇） | 先印出來；進階可切換備援資料 |
-| `ParamUpdate { key, value }` / `ParamDeleted { key }` | 有人用 `dora param set / delete` 動態改參數 | 調整門檻、頻率等 |
-| `Reload { .. }` | 目前只給 Python operator 熱重載用 | 一般節點用不到 |
+**`Input { id, metadata, data }`**
+
+- 什麼時候來：某個輸入來資料。`id` 是**你在 YAML 裡取的輸入名稱**，不是上游的輸出名稱
+- 你通常怎麼處理：依 `id` 分派；`data` 是 Arrow 陣列
+
+**`InputClosed { id }`**
+
+- 什麼時候來：該輸入的上游節點結束了，不會再有資料
+- 你通常怎麼處理：清理狀態；若這是唯一資料來源就收工
+
+**`Stop(cause)`**
+
+- 什麼時候來：事件串流即將關閉。`cause` 是 `Manual`（`dora stop` / Ctrl-C，要盡快退出）或 `AllInputsClosed`（所有輸入都關了）
+- 你通常怎麼處理：跳出迴圈
+
+**`Error(msg)`**
+
+- 什麼時候來：dora 內部錯誤，**以及 `recv_timeout` 逾時**
+- 你通常怎麼處理：印出來；不要直接當成致命錯誤
+
+**`NodeFailed { .. }` / `NodeRestarted { id }` / `InputRecovered { id }`**
+
+- 什麼時候來：上游節點失敗、重啟、恢復（搭配重啟策略，第 9 篇）
+- 你通常怎麼處理：先印出來；進階可切換備援資料
+
+**`ParamUpdate { key, value }` / `ParamDeleted { key }`**
+
+- 什麼時候來：有人用 `dora param set / delete` 動態改參數
+- 你通常怎麼處理：調整門檻、頻率等
+
+**`Reload { .. }`**
+
+- 什麼時候來：目前只給 Python operator 熱重載用
+- 你通常怎麼處理：一般節點用不到
 
 `Event` 與 `StopCause` 都是 `#[non_exhaustive]`，所以 `match` 一定要留 `_ => {}`（或像範例一樣印出來）。
 
@@ -290,4 +326,9 @@ stats 結束（共 4 筆）
 
 ---
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 3 篇](lesson-03.md) · [第 5 篇 →](lesson-05.md) · **範例：** [examples/lesson-04/](../../examples/lesson-04/)
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 3 篇](lesson-03.md)
+- 下一課：[第 5 篇 →](lesson-05.md)
+- 本課範例：[examples/lesson-04/](../../examples/lesson-04/)

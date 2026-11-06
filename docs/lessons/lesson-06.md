@@ -3,7 +3,18 @@
 > 版本：dora v1.1.0（CLI 與 `dora-node-api` 同版）　驗證日期：2026-11-06（台北時間），x86_64 Linux 上實際 `dora validate` / `dora build` / `dora up` / `dora start --detach` / `dora list` / `dora logs` / `dora stop` / `dora down` 成功；結束後 `dora status` 確認 coordinator 已關閉（結束碼 1，符合預期）。另驗證 `dora destroy` 與 `dora down` 行為相同。
 
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 5 篇](lesson-05.md) · [第 7 篇（尚未發布）](../../README.md#課程大綱20-篇規劃) · **範例：** [examples/lesson-06/](../../examples/lesson-06/)
+- [返回教材總覽](../../README.md)
+- 上一課：[第 5 篇](lesson-05.md)
+- 下一課：第 7 篇**尚未發布**（僅規劃；見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 本課範例：[examples/lesson-06/](../../examples/lesson-06/)
+
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 5 篇](lesson-05.md)
+- 下一課：第 7 篇**尚未發布**（僅規劃；見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 本課範例：[examples/lesson-06/](../../examples/lesson-06/)
+
 ## 目錄
 
 - [重點說明](#重點說明)
@@ -22,14 +33,35 @@ dora up  →  dora start  →  dora logs / list / stop  →  dora down
 
 ### 1. `dora run`  vs  長駐生命週期
 
-| | `dora run` | `dora up` + `dora start` |
-|---|---|---|
-| coordinator / daemon | 這次執行專用，跑完就沒了 | 先 `up` 常駐，之後可反覆 `start` |
-| 終端機 | 前景跑到結束才還給你 | `start --detach` 後 CLI 立刻回來；`--attach` 則等同前景 |
-| 多個資料流 | 一次一個 | 同一個 coordinator 上可同時跑多個 |
-| 查日誌 / 列表 | 看當下 stdout | `dora logs`、`dora list`、`dora status` |
-| 收工 | 資料流自己結束，或 Ctrl-C | `dora stop` 停資料流；`dora down` 拆掉 coordinator+daemon |
-| 適合 | 第 2–5 篇這種「跑完就看結果」的練習 | 長跑、除錯、之後的分散式（第 14 篇） |
+**coordinator / daemon**
+
+- **`dora run`：** 這次執行專用，跑完就沒了
+- **`dora up` + `dora start`：** 先 `up` 常駐，之後可反覆 `start`
+
+**終端機**
+
+- **`dora run`：** 前景跑到結束才還給你
+- **`dora up` + `dora start`：** `start --detach` 後 CLI 立刻回來；`--attach` 則等同前景
+
+**多個資料流**
+
+- **`dora run`：** 一次一個
+- **`dora up` + `dora start`：** 同一個 coordinator 上可同時跑多個
+
+**查日誌 / 列表**
+
+- **`dora run`：** 看當下 stdout
+- **`dora up` + `dora start`：** `dora logs`、`dora list`、`dora status`
+
+**收工**
+
+- **`dora run`：** 資料流自己結束，或 Ctrl-C
+- **`dora up` + `dora start`：** `dora stop` 停資料流；`dora down` 拆掉 coordinator+daemon
+
+**適合情境**
+
+- **`dora run`：** 第 2–5 篇這種「跑完就看結果」的練習
+- **`dora up` + `dora start`：** 長跑、除錯、之後的分散式（第 14 篇）
 
 記住一句話：**`run` = 一次性；`up`/`start`/`down` = 服務式管理。**
 
@@ -294,4 +326,9 @@ printer 結束
 
 ---
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 5 篇](lesson-05.md) · [第 7 篇（尚未發布）](../../README.md#課程大綱20-篇規劃) · **範例：** [examples/lesson-06/](../../examples/lesson-06/)
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 5 篇](lesson-05.md)
+- 下一課：第 7 篇**尚未發布**（僅規劃；見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 本課範例：[examples/lesson-06/](../../examples/lesson-06/)

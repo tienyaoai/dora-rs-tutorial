@@ -23,13 +23,11 @@ dora-rs 用 **dataflow.yml** 描述節點之間的資料流，節點可用 Rust�
 
 ## 先備條件
 
-| 項目 | 說明 |
-|------|------|
-| Rust | `rustup` 的 stable（教材撰寫時為 **1.99.1**；需支援 **edition 2024**） |
-| dora CLI | **v1.1.0**，與節點 crate 同版（安裝見 [第 2 篇](docs/lessons/lesson-02.md)） |
-| 作業系統 | 原文與範例以 **Linux x86_64** 為準；官方 CLI 亦有 aarch64 預編譯檔 |
-| 磁碟 | 首次 `cargo build` / `dora build` 會產生大型 `target/`（debug 可達數 GB），練習完建議 `cargo clean` |
-| glibc | 使用官方預編譯 CLI 時需 **glibc ≥ 2.34** |
+- **Rust：** `rustup` 的 stable（教材撰寫時為 **1.99.1**；需支援 **edition 2024**）
+- **dora CLI：** **v1.1.0**，與節點 crate 同版（安裝見 [第 2 篇](docs/lessons/lesson-02.md)）
+- **作業系統：** 原文與範例以 **Linux x86_64** 為準；官方 CLI 亦有 aarch64 預編譯檔
+- **磁碟：** 首次 `cargo build` / `dora build` 會產生大型 `target/`（debug 可達數 GB），練習完建議 `cargo clean`
+- **glibc：** 使用官方預編譯 CLI 時需 **glibc ≥ 2.34**
 
 ---
 
@@ -60,31 +58,36 @@ dora build dataflow.yml && dora run dataflow.yml
 
 ## 已發布課程（6 篇）
 
-| 篇 | 標題 | 教材 | 範例 |
-|----|------|------|------|
-| 1 | dora-rs 是什麼？跟 ROS 2 差在哪 | [lesson-01.md](docs/lessons/lesson-01.md) | [examples/lesson-01/](examples/lesson-01/) |
-| 2 | 安裝 dora CLI，跑官方 rust-dataflow 範例 | [lesson-02.md](docs/lessons/lesson-02.md) | [取得官方範例](examples/lesson-02/README.md) |
-| 3 | 逐行讀懂 dataflow.yml | [lesson-03.md](docs/lessons/lesson-03.md) | [examples/lesson-03/](examples/lesson-03/) |
-| 4 | 第一個像樣的 Rust 節點——`DoraNode` 與事件迴圈 | [lesson-04.md](docs/lessons/lesson-04.md) | [examples/lesson-04/](examples/lesson-04/) |
-| 5 | Arrow 資料與 metadata——除了純量，還能送什麼？ | [lesson-05.md](docs/lessons/lesson-05.md) | [examples/lesson-05/](examples/lesson-05/) |
-| 6 | `dora up / start / logs / down`——資料流的生命週期管理 | [lesson-06.md](docs/lessons/lesson-06.md) | [examples/lesson-06/](examples/lesson-06/) |
+1. **第 1 篇：** [dora-rs 是什麼？跟 ROS 2 差在哪](docs/lessons/lesson-01.md)  
+   範例：[examples/lesson-01/](examples/lesson-01/)
+2. **第 2 篇：** [安裝 dora CLI，跑官方 rust-dataflow 範例](docs/lessons/lesson-02.md)  
+   範例：[取得官方 rust-dataflow](examples/lesson-02/README.md)
+3. **第 3 篇：** [逐行讀懂 dataflow.yml](docs/lessons/lesson-03.md)  
+   範例：[examples/lesson-03/](examples/lesson-03/)
+4. **第 4 篇：** [第一個像樣的 Rust 節點——`DoraNode` 與事件迴圈](docs/lessons/lesson-04.md)  
+   範例：[examples/lesson-04/](examples/lesson-04/)
+5. **第 5 篇：** [Arrow 資料與 metadata——除了純量，還能送什麼？](docs/lessons/lesson-05.md)  
+   範例：[examples/lesson-05/](examples/lesson-05/)
+6. **第 6 篇：** [`dora up / start / logs / down`——資料流的生命週期管理](docs/lessons/lesson-06.md)  
+   範例：[examples/lesson-06/](examples/lesson-06/)
 
 ---
 
 ## 課程大綱（20 篇規劃）
 
-| 篇 | 狀態 | 備註 |
-|----|------|------|
-| 1–6 | **已發布** | 見上表 |
-| 7 | 尚未發布 | 原文僅寫「繼續往前」，無正式標題 |
-| 8 | 尚未發布 | 暫定主題提示（非正式標題）：佇列／背壓 |
-| 9 | 尚未發布 | 暫定：重啟策略 |
-| 10 | 尚未發布 | 暫定：共享記憶體零拷貝 |
-| 11–12 | 尚未發布 | — |
-| 13 | 尚未發布 | 暫定：測試 |
-| 14 | 尚未發布 | 暫定：分散式／daemon |
-| 15 | 尚未發布 | 暫定：ZYNQ／aarch64 |
-| 16–20 | 尚未發布 | — |
+**已發布（可閱讀）：第 1～6 篇** — 見上一節連結。
+
+**尚未發布（第 7～20 篇）：** 以下**沒有**完整教材，請勿當成已上線內容。
+
+- **第 7 篇：** 尚未發布（原文僅寫「繼續往前」，無正式標題）
+- **第 8 篇：** 尚未發布 — 暫定主題提示（非正式標題）：佇列／背壓
+- **第 9 篇：** 尚未發布 — 暫定：重啟策略
+- **第 10 篇：** 尚未發布 — 暫定：共享記憶體零拷貝
+- **第 11～12 篇：** 尚未發布
+- **第 13 篇：** 尚未發布 — 暫定：測試
+- **第 14 篇：** 尚未發布 — 暫定：分散式／daemon
+- **第 15 篇：** 尚未發布 — 暫定：ZYNQ／aarch64
+- **第 16～20 篇：** 尚未發布
 
 第 8～15 篇的「暫定主題」僅來自已發布課文中的交叉引用，**不代表最終標題**。
 

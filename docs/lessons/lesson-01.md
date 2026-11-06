@@ -3,7 +3,16 @@
 > 系列：Rust 為主、從基礎到進階，共 20 篇。驗證環境：dora CLI / dora-node-api v1.1.0、Rust 1.99.1、x86_64 Linux。
 
 
-**導覽：** [返回教材總覽](../../README.md) · [第 2 篇 →](lesson-02.md) · **範例：** [examples/lesson-01/](../../examples/lesson-01/)
+- [返回教材總覽](../../README.md)
+- 下一課：[第 2 篇 →](lesson-02.md)
+- 本課範例：[examples/lesson-01/](../../examples/lesson-01/)
+
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 下一課：[第 2 篇 →](lesson-02.md)
+- 本課範例：[examples/lesson-01/](../../examples/lesson-01/)
+
 ## 目錄
 
 - [重點說明](#重點說明)
@@ -24,14 +33,37 @@
 
 ### 跟 ROS 2 比較
 
-| 面向 | ROS 2 | dora-rs |
-|---|---|---|
-| 系統連線方式 | 執行時用 topic 名稱彼此發現（DDS） | 事先在 dataflow.yml 寫死整張圖 |
-| 訊息格式 | `.msg` 定義、需要產生程式碼 | Apache Arrow，不需要產生程式碼 |
-| 大資料傳輸 | 一般要序列化；零拷貝需要特定設定 | 同機器自動走共享記憶體 |
-| 建置工具 | colcon / ament，需要安裝 ROS 發行版 | 一般的 `cargo` 專案＋一個 `dora` 執行檔 |
-| 生態系 | 非常龐大（導航、MoveIt、驅動程式…） | 較小，但有 ROS 2 bridge 可以互通 |
-| 適合 | 需要大量現成套件的完整機器人系統 | 重視低延遲、AI 管線、想用純 Rust 開發 |
+下列逐項對照（直向閱讀，小螢幕不必橫向捲動）。
+
+**系統連線方式**
+
+- **ROS 2：** 執行時用 topic 名稱彼此發現（DDS）
+- **dora-rs：** 事先在 dataflow.yml 寫死整張圖
+
+**訊息格式**
+
+- **ROS 2：** `.msg` 定義、需要產生程式碼
+- **dora-rs：** Apache Arrow，不需要產生程式碼
+
+**大資料傳輸**
+
+- **ROS 2：** 一般要序列化；零拷貝需要特定設定
+- **dora-rs：** 同機器自動走共享記憶體
+
+**建置工具**
+
+- **ROS 2：** colcon / ament，需要安裝 ROS 發行版
+- **dora-rs：** 一般的 `cargo` 專案＋一個 `dora` 執行檔
+
+**生態系**
+
+- **ROS 2：** 非常龐大（導航、MoveIt、驅動程式…）
+- **dora-rs：** 較小，但有 ROS 2 bridge 可以互通
+
+**適合情境**
+
+- **ROS 2：** 需要大量現成套件的完整機器人系統
+- **dora-rs：** 重視低延遲、AI 管線、想用純 Rust 開發
 
 一句話：ROS 2 是「大家在網路上互相找」，dora 是「先畫好流程圖再跑」。流程圖寫死的好處是好除錯、好部署，也讓框架能幫你做最佳化。
 
@@ -182,4 +214,8 @@ dora run dataflow.yml
 
 ---
 
-**導覽：** [返回教材總覽](../../README.md) · [第 2 篇 →](lesson-02.md) · **範例：** [examples/lesson-01/](../../examples/lesson-01/)
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 下一課：[第 2 篇 →](lesson-02.md)
+- 本課範例：[examples/lesson-01/](../../examples/lesson-01/)

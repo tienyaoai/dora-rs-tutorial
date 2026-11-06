@@ -3,9 +3,20 @@
 > 版本：dora v1.1.0（CLI 與 `dora-node-api` 同版）　驗證日期：2026-11-02（台北時間），在 x86_64 Linux 主機上實際編譯並執行成功。
 
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 1 篇](lesson-01.md) · [第 3 篇 →](lesson-03.md) · **範例：** [取得官方 rust-dataflow](../../examples/lesson-02/README.md)
 
 > **第 2 課範例說明：** 本 repo **沒有**可獨立 `cargo build` 的 `lesson-02` 專案。請依下文在 **dora-rs 官方 monorepo**（tag `v1.1.0`）內編譯 `examples/rust-dataflow/`。步驟摘要見 [examples/lesson-02/README.md](../../examples/lesson-02/README.md)。
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 1 篇](lesson-01.md)
+- 下一課：[第 3 篇 →](lesson-03.md)
+- 本課範例：[取得官方 rust-dataflow](../../examples/lesson-02/README.md)
+
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 1 篇](lesson-01.md)
+- 下一課：[第 3 篇 →](lesson-03.md)
+- 本課範例：[取得官方 rust-dataflow](../../examples/lesson-02/README.md)
 
 ## 目錄
 
@@ -19,11 +30,26 @@
 
 ### 2. 三種安裝方式
 
-| 方式 | 指令 | 適合 |
-|---|---|---|
-| 預編譯執行檔（我們用這個） | 從 GitHub Release 下載 tar.gz | 最快，幾秒鐘搞定 |
-| 官方安裝腳本 | `curl --proto '=https' --tlsv1.2 -LsSf https://github.com/dora-rs/dora/releases/latest/download/dora-cli-installer.sh \| sh` | 不想自己管路徑 |
-| cargo 編譯 | `cargo install dora-cli --locked` | 要改 CLI 原始碼或平台沒有預編譯檔 |
+**預編譯執行檔（我們用這個）**
+
+- 做法：從 GitHub Release 下載 v1.1.0 的 tar.gz（下文第 3 節有完整指令）
+- 適合：最快，幾秒鐘搞定
+
+**官方安裝腳本**
+
+- 做法：
+
+```bash
+curl --proto '=https' --tlsv1.2 -LsSf \
+  https://github.com/dora-rs/dora/releases/latest/download/dora-cli-installer.sh | sh
+```
+
+- 適合：不想自己管路徑
+
+**cargo 編譯**
+
+- 做法：`cargo install dora-cli --locked`
+- 適合：要改 CLI 原始碼，或平台沒有預編譯檔
 
 預編譯檔需要 glibc ≥ 2.34。官方也有 `aarch64-unknown-linux-gnu` 版本，第 15 篇上 ZYNQ 時會用到。
 
@@ -193,4 +219,9 @@ dora run dataflow.yml
 
 ---
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 1 篇](lesson-01.md) · [第 3 篇 →](lesson-03.md) · **範例：** [取得官方 rust-dataflow](../../examples/lesson-02/README.md)
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 1 篇](lesson-01.md)
+- 下一課：[第 3 篇 →](lesson-03.md)
+- 本課範例：[取得官方 rust-dataflow](../../examples/lesson-02/README.md)

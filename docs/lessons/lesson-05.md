@@ -3,7 +3,18 @@
 > 版本：dora v1.1.0（CLI 與 `dora-node-api` 同版）　驗證日期：2026-11-05（台北時間），x86_64 Linux 上實際 `dora validate` / `dora build` / `dora run` 成功（結束碼 0）。
 
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 4 篇](lesson-04.md) · [第 6 篇 →](lesson-06.md) · **範例：** [examples/lesson-05/](../../examples/lesson-05/)
+- [返回教材總覽](../../README.md)
+- 上一課：[第 4 篇](lesson-04.md)
+- 下一課：[第 6 篇 →](lesson-06.md)
+- 本課範例：[examples/lesson-05/](../../examples/lesson-05/)
+
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 4 篇](lesson-04.md)
+- 下一課：[第 6 篇 →](lesson-06.md)
+- 本課範例：[examples/lesson-05/](../../examples/lesson-05/)
+
 ## 目錄
 
 - [重點說明](#重點說明)
@@ -24,14 +35,27 @@ dora 節點之間傳的 payload 一律是 [Apache Arrow](https://arrow.apache.or
 
 ### 2. 三層用法：從簡單到完整
 
-| 需求 | 送的時候 | 收的時候 |
-|---|---|---|
-| 純量、字串 | 直接丟 `f64`、`u32`、`bool`、`&str`、`String`… | `f64::try_from(&data)?`、`&str::try_from(&data)?` |
-| 一整段同型別數值 | 丟 `Vec<T>`（`T` 是 `u8`…`u64`、`i8`…`i64`、`f32`、`f64`） | `Vec<T>::try_from(&data)?`（複製），或 `&[T]::try_from(&data)?`（**零拷貝借用**） |
-| 結構化資料（表格、偵測框） | 自己建 `StructArray`，用 `DoraArray::from_array(...)` 包起來 | `StructArray::from(data.as_array().to_data())`，再依欄名取出各欄 |
-| 只想傳 metadata、沒有資料 | 丟 `()` | 長度 0 的 `Null` 陣列，忽略 data 即可 |
+**純量、字串**
 
-要使用第三列，`Cargo.toml` 要開 feature：
+- 送的時候：直接丟 `f64`、`u32`、`bool`、`&str`、`String`…
+- 收的時候：`f64::try_from(&data)?`、`&str::try_from(&data)?`
+
+**一整段同型別數值**
+
+- 送的時候：丟 `Vec<T>`（`T` 是 `u8`…`u64`、`i8`…`i64`、`f32`、`f64`）
+- 收的時候：`Vec<T>::try_from(&data)?`（複製），或 `&[T]::try_from(&data)?`（**零拷貝借用**）
+
+**結構化資料（表格、偵測框）**
+
+- 送的時候：自己建 `StructArray`，用 `DoraArray::from_array(...)` 包起來
+- 收的時候：`StructArray::from(data.as_array().to_data())`，再依欄名取出各欄
+
+**只想傳 metadata、沒有資料**
+
+- 送的時候：丟 `()`
+- 收的時候：長度 0 的 `Null` 陣列，忽略 data 即可
+
+要使用「結構化資料」那一層，`Cargo.toml` 要開 feature：
 
 ```toml
 dora-node-api = { version = "1.1.0", features = ["arrow-v59"] }
@@ -334,4 +358,9 @@ consumer: consumer 結束
 
 ---
 
-**導覽：** [返回教材總覽](../../README.md) · [← 第 4 篇](lesson-04.md) · [第 6 篇 →](lesson-06.md) · **範例：** [examples/lesson-05/](../../examples/lesson-05/)
+**導覽**
+
+- [返回教材總覽](../../README.md)
+- 上一課：[第 4 篇](lesson-04.md)
+- 下一課：[第 6 篇 →](lesson-06.md)
+- 本課範例：[examples/lesson-05/](../../examples/lesson-05/)
