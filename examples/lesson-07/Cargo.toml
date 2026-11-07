@@ -1,0 +1,8 @@
+[package]
+name = "lesson-07"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dora-node-api = "1.1.0"
+eyre = "0.6"

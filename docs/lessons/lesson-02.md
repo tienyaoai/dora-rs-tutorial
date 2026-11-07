@@ -6,11 +6,6 @@
 
 > **第 2 課範例說明：** 本 repo **沒有**可獨立 `cargo build` 的 `lesson-02` 專案。請依下文在 **dora-rs 官方 monorepo**（tag `v1.1.0`）內編譯 `examples/rust-dataflow/`。步驟摘要見 [examples/lesson-02/README.md](../../examples/lesson-02/README.md)。
 
-- [返回教材總覽](../../README.md)
-- 上一課：[第 1 篇](lesson-01.md)
-- 下一課：[第 3 篇 →](lesson-03.md)
-- 本課範例：[取得官方 rust-dataflow](../../examples/lesson-02/README.md)
-
 **導覽**
 
 - [返回教材總覽](../../README.md)

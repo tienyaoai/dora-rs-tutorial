@@ -3,16 +3,11 @@
 > 版本：dora v1.1.0（CLI 與 `dora-node-api` 同版）　驗證日期：2026-11-06（台北時間），x86_64 Linux 上實際 `dora validate` / `dora build` / `dora up` / `dora start --detach` / `dora list` / `dora logs` / `dora stop` / `dora down` 成功；結束後 `dora status` 確認 coordinator 已關閉（結束碼 1，符合預期）。另驗證 `dora destroy` 與 `dora down` 行為相同。
 
 
-- [返回教材總覽](../../README.md)
-- 上一課：[第 5 篇](lesson-05.md)
-- 下一課：第 7 篇**尚未發布**（僅規劃；見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
-- 本課範例：[examples/lesson-06/](../../examples/lesson-06/)
-
 **導覽**
 
 - [返回教材總覽](../../README.md)
 - 上一課：[第 5 篇](lesson-05.md)
-- 下一課：第 7 篇**尚未發布**（僅規劃；見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 下一課：[第 7 篇 →](lesson-07.md)
 - 本課範例：[examples/lesson-06/](../../examples/lesson-06/)
 
 ## 目錄
@@ -322,7 +317,7 @@ printer 結束
 2. 故意**不要**先 `dora up` 就執行 `dora start`，把錯誤訊息記下來；再 `dora up` 一次後重試。
 3. 在 `ticker` 仍 Running 時執行不帶 `--force` 的 `dora down`，確認它會拒絕；再加上 `--force` 看結果。想練習 `dora clean` 的話，先 `stop` 讓狀態變 Finished，再 `dora clean`，最後 `dora list` 應變空。
 
-下一篇：第 7 篇尚未發布；佇列與背壓實測預計在第 8 篇登場（見 [課程大綱](../../README.md#課程大綱20-篇規劃)）。
+下一篇：[第 7 篇：多節點管線——扇入、扇出與 YAML 連線](lesson-07.md)。
 
 ---
 
@@ -330,5 +325,5 @@ printer 結束
 
 - [返回教材總覽](../../README.md)
 - 上一課：[第 5 篇](lesson-05.md)
-- 下一課：第 7 篇**尚未發布**（僅規劃；見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 下一課：[第 7 篇 →](lesson-07.md)
 - 本課範例：[examples/lesson-06/](../../examples/lesson-06/)
