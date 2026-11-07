@@ -1,0 +1,33 @@
+nodes:
+  - id: ticker
+    description: 資料來源：送出 1..=6 的 u64 計數後自行結束（扇出給 multiply 與 printer）
+    build: cargo build --bin ticker
+    path: target/debug/ticker
+    outputs:
+      - count
+
+  - id: multiply
+    description: 中間節點：把 count 乘以 10
+    build: cargo build --bin multiply
+    path: target/debug/multiply
+    inputs:
+      value: ticker/count
+    outputs:
+      - scaled
+
+  - id: accumulate
+    description: 中間節點：對 scaled 做累加，每次送出目前總和
+    build: cargo build --bin accumulate
+    path: target/debug/accumulate
+    inputs:
+      scaled: multiply/scaled
+    outputs:
+      - total
+
+  - id: printer
+    description: 匯流端：扇入 raw（直接來自 ticker）與 total（管線末端）
+    build: cargo build --bin printer
+    path: target/debug/printer
+    inputs:
+      raw: ticker/count
+      total: accumulate/total

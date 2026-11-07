@@ -3,10 +3,6 @@
 > 系列：Rust 為主、從基礎到進階，共 20 篇。驗證環境：dora CLI / dora-node-api v1.1.0、Rust 1.99.1、x86_64 Linux。
 
 
-- [返回教材總覽](../../README.md)
-- 下一課：[第 2 篇 →](lesson-02.md)
-- 本課範例：[examples/lesson-01/](../../examples/lesson-01/)
-
 **導覽**
 
 - [返回教材總覽](../../README.md)

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-07 — 第 7 篇與四節點範例
+
+- 新增 [第 7 篇](docs/lessons/lesson-07.md)（多節點管線、扇入／扇出）與 `examples/lesson-07/`。
+- 更新 `README.md`（已發布 1～7 課）、第 6 課導覽與 `scripts/refresh-lesson-nav.py`（支援第 7 課）。
+- 路徑改為 `examples/lesson-07`；移除本機絕對路徑與未公開 log 引用。
+- 維護時重驗紀錄見 `VERSIONS.md` 與本輪 PR 描述。
+
 ## 2026-11-06 — 閱讀版面修整（文件 only）
 
 - 六課與 `README.md`：將不適合小螢幕的寬表格改為分組條列／短段落（技術內容、程式、練習均保留）。

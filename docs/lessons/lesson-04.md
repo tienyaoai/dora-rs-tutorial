@@ -3,11 +3,6 @@
 > 版本：dora v1.1.0（CLI 與 `dora-node-api` 同版）　驗證日期：2026-11-04（台北時間），x86_64 Linux 上實際 `dora validate` / `dora build` / `dora run` 成功（結束碼 0）。
 
 
-- [返回教材總覽](../../README.md)
-- 上一課：[第 3 篇](lesson-03.md)
-- 下一課：[第 5 篇 →](lesson-05.md)
-- 本課範例：[examples/lesson-04/](../../examples/lesson-04/)
-
 **導覽**
 
 - [返回教材總覽](../../README.md)
