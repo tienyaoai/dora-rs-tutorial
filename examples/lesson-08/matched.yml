@@ -1,0 +1,21 @@
+nodes:
+  - id: producer
+    description: 快速來源：每個 tick 送一個遞增序號，送滿 TOTAL 筆後自行結束
+    build: cargo build --bin producer
+    path: target/debug/producer
+    env:
+      TOTAL: "40"
+    inputs:
+      tick: dora/timer/hz/4
+    outputs:
+      - seq
+
+  - id: consumer
+    description: 慢速下游：每筆處理 WORK_MS 毫秒，最後列出序號缺口
+    build: cargo build --bin consumer
+    path: target/debug/consumer
+    env:
+      WORK_MS: "200"
+      TOTAL: "40"
+    inputs:
+      data: producer/seq          # 4 Hz = 每 250ms 一筆，下游 200ms 處理得完

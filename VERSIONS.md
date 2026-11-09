@@ -26,8 +26,10 @@ Windows 與 macOS **未**列入原文驗證範圍。
 | 5 | 2026-11-05 | `dora run` 結束碼 0；Arrow + metadata |
 | 6 | 2026-11-06 | `up` / `start` / `logs` / `stop` / `down` 等結束碼如課文；`status` 在 down 後為 1 |
 | 7 | 2026-11-07 | `validate` / `build` / `run` 結束碼 0；最終 `total=210`；錯誤輸出名／錯誤節點 id 之 `validate` 結束碼 1（課文聲明，見下文重驗） |
+| 8 | 2026-11-08 | 七份 YAML `validate` 0；`drop-latest` 收到 11/40、`drop-default` 20/40、`backpressure`／`matched`／`clock` 40/40；`clock-no-exit` 以 `timeout` 結束碼 124 為預期 |
+| 9 | 2026-11-09 | `on-failure` 結束碼 0（重啟 2 次）；`never` 與 `exhausted` 結束碼 1 |
 
-完整終端機 log **未**納入 repo（含第 6 課課文曾提及的 `run-lifecycle.log`、第 7 課交接用 `run.log`）。
+完整終端機 log **未**納入 repo（含第 6 課課文曾提及的 `run-lifecycle.log`、第 7～9 課作者本機 `run-*.log`）。
 
 ---
 
@@ -66,6 +68,25 @@ Windows 與 macOS **未**實測。
 
 ---
 
+## 本 repo 維護時重驗（2026-11-09，第 8～9 課同步）
+
+環境：Linux x86_64，Rust **1.99.1**（stable），dora-cli **1.1.0**。
+
+| 檢查 | 結果 |
+|------|------|
+| `python3 scripts/check-markdown-nav.py` | **通過**（22 個 `.md`） |
+| `cargo check` / `cargo build` @ `examples/lesson-08` | **通過** |
+| `cargo check` / `cargo build` @ `examples/lesson-09` | **通過** |
+| `dora validate` @ `examples/lesson-08/*.yml`（7 份） | **通過** |
+| `dora validate` @ `examples/lesson-09/*.yml`（3 份） | **通過** |
+| `dora run drop-latest.yml` | **通過**（結束碼 0；consumer `11/40`） |
+| `dora run on-failure.yml` | **通過**（結束碼 0；sink `NodeRestarted 2 次`） |
+| 其餘 lesson-08 YAML / lesson-09 `never`・`exhausted` | **未執行**（依課文與作者紀錄；請自行驗證） |
+
+Windows 與 macOS **未**實測。
+
+---
+
 ## 內容來源包（建檔用）
 
-公開內容最初整理自內部來源 zip（SHA256 `8e8a9cf6431e60a32d43221dbf1badb6ea5b96e3cfb6b411d52a7de67c4fb5a8`）。第 7 課來自 `dora-rs-lesson-07-source-20261107.zip`（SHA256 `ad4fc51d192868f3970cb408388831027277582ed7bfc97aecda337dcc45e02f`）。zip、移轉清單與完整 raw log**未**納入本 repo。
+公開內容最初整理自內部來源 zip（SHA256 `8e8a9cf6431e60a32d43221dbf1badb6ea5b96e3cfb6b411d52a7de67c4fb5a8`）。第 7 課來自 `dora-rs-lesson-07-source-20261107.zip`（SHA256 `ad4fc51d192868f3970cb408388831027277582ed7bfc97aecda337dcc45e02f`）。第 8～9 課來自 `dora-lessons-08-09-source.zip`（SHA256 `59342fe7326c18e1d0734d9d365f002646895f21c251466316d78f798a01bfff`）。zip、移轉清單與完整 raw log**未**納入本 repo。

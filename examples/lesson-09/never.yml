@@ -1,0 +1,27 @@
+nodes:
+  - id: producer
+    build: cargo build --bin producer
+    path: target/debug/producer
+    env:
+      TOTAL: "20"
+    inputs:
+      tick: dora/timer/millis/100
+    outputs:
+      - seq
+
+  - id: worker
+    build: cargo build --bin worker
+    path: target/debug/worker
+    restart_policy: never
+    env:
+      CRASH_AT: "7,12"
+    inputs:
+      seq: producer/seq
+    outputs:
+      - result
+
+  - id: sink
+    build: cargo build --bin sink
+    path: target/debug/sink
+    inputs:
+      result: worker/result
