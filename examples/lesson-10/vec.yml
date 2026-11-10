@@ -1,0 +1,21 @@
+nodes:
+  - id: producer
+    build: cargo build --release --bin producer
+    path: target/release/producer
+    env:
+      MODE: vec
+      N: "100"
+    outputs:
+      - frame
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    env:
+      READ: copy
+      LABEL: vec
+      CSV: result-vec.csv
+    inputs:
+      frame:
+        source: producer/frame
+        queue_size: 100

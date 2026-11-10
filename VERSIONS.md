@@ -87,6 +87,22 @@ Windows 與 macOS **未**實測。
 
 ---
 
+## 本 repo 維護時重驗（2026-11-10，第 10 課同步）
+
+環境：Linux x86_64，Rust **1.99.1**（stable），dora-cli **1.1.0**。
+
+| 檢查 | 結果 |
+|------|------|
+| `python3 scripts/check-markdown-nav.py` | **通過**（24 個 `.md`） |
+| `cargo check` / `cargo build --release` @ `examples/lesson-10` | **通過** |
+| `dora validate` @ `examples/lesson-10/*.yml`（3 份） | **通過** |
+| `dora run raw.yml` | **通過**（結束碼 0；sink `bad=0`） |
+| `vec.yml` / `noshm.yml` 完整 benchmark | **未執行**（依課文與作者 `rounds/` 紀錄；請自行驗證） |
+
+Windows 與 macOS **未**實測。
+
+---
+
 ## 內容來源包（建檔用）
 
-公開內容最初整理自內部來源 zip（SHA256 `8e8a9cf6431e60a32d43221dbf1badb6ea5b96e3cfb6b411d52a7de67c4fb5a8`）。第 7 課來自 `dora-rs-lesson-07-source-20261107.zip`（SHA256 `ad4fc51d192868f3970cb408388831027277582ed7bfc97aecda337dcc45e02f`）。第 8～9 課來自 `dora-lessons-08-09-source.zip`（SHA256 `59342fe7326c18e1d0734d9d365f002646895f21c251466316d78f798a01bfff`）。zip、移轉清單與完整 raw log**未**納入本 repo。
+公開內容最初整理自內部來源 zip（SHA256 `8e8a9cf6431e60a32d43221dbf1badb6ea5b96e3cfb6b411d52a7de67c4fb5a8`）。第 7 課來自 `dora-rs-lesson-07-source-20261107.zip`（SHA256 `ad4fc51d192868f3970cb408388831027277582ed7bfc97aecda337dcc45e02f`）。第 8～9 課來自 `dora-lessons-08-09-source.zip`（SHA256 `59342fe7326c18e1d0734d9d365f002646895f21c251466316d78f798a01bfff`）。第 10 課來自 `lesson10-upload.tar.gz`（SHA256 `b1e8972baa2d111698ab53108f35ac60809b3470d4046271bbdf370c9c868388`）。zip、移轉清單與完整 raw log**未**納入本 repo。

@@ -16,3 +16,4 @@ out/
 
 # Logs (not part of tutorial deliverables)
 *.log
+!examples/lesson-10/rounds/*.log
