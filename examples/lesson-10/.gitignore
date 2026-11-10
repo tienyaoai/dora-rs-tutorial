@@ -1,0 +1,2 @@
+# Per-run CSV from `dora run` (authoritative multi-round evidence is in rounds/)
+/result-*.csv
