@@ -6,7 +6,7 @@
 
 - [返回教材總覽](../../README.md)
 - 上一課：[第 6 篇](lesson-06.md)
-- 下一課：第 8 篇**尚未發布**（僅規劃；佇列／背壓等見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 下一課：[第 8 篇 →](lesson-08.md)
 - 本課範例：[examples/lesson-07/](../../examples/lesson-07/)
 
 ## 目錄
@@ -387,7 +387,7 @@ daemon dataflow finished
 2. 在 YAML 拿掉 `printer` 的 `raw: ticker/count` 這一行，並把 `printer.rs` 的 `open_inputs` 改成 `1`。重跑後還看得到 `[raw]` 嗎？這示範了「配線決定拓撲，不是程式硬寫」。
 3. 進階（扇入再加一站）：新增節點 `fuse`，同時訂閱 `multiply/scaled` 與另一個新來源 `offset`（固定送一次 `u64: 1000` 後結束）。`fuse` 把兩邊加總後再交給 `accumulate`。注意 `offset` 只送一次就結束時，`fuse` 要怎麼處理兩條 `InputClosed`？
 
-下一篇：第 8 篇尚未發布；佇列與背壓預計在該篇登場（見 [課程大綱](../../README.md#課程大綱20-篇規劃)）。
+下一篇：[第 8 篇：計時器頻率與背壓——上游太快、下游太慢時，佇列怎麼表現](lesson-08.md)。
 
 ---
 
@@ -395,5 +395,5 @@ daemon dataflow finished
 
 - [返回教材總覽](../../README.md)
 - 上一課：[第 6 篇](lesson-06.md)
-- 下一課：第 8 篇**尚未發布**（僅規劃；佇列／背壓等見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 下一課：[第 8 篇 →](lesson-08.md)
 - 本課範例：[examples/lesson-07/](../../examples/lesson-07/)

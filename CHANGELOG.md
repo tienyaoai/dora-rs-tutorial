@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-09 — 第 8～9 篇與背壓／重啟範例
+
+- 新增 [第 8 篇](docs/lessons/lesson-08.md)（計時器、佇列策略、背壓）與 `examples/lesson-08/`（七份 YAML）。
+- 新增 [第 9 篇](docs/lessons/lesson-09.md)（錯誤處理、`restart_policy`）與 `examples/lesson-09/`。
+- 更新 `README.md`（已發布 1～9 課）、第 7 課導覽與 `scripts/refresh-lesson-nav.py`（支援第 8～9 課）。
+- 路徑改為 repo 相對路徑；移除本機路徑與未公開 log 引用。
+- 內容來源：`dora-lessons-08-09-source.zip`（SHA256 `59342fe7326c18e1d0734d9d365f002646895f21c251466316d78f798a01bfff`）。
+- 維護時重驗紀錄見 `VERSIONS.md` 與本輪 PR 描述。
+
 ## 2026-11-07 — 第 7 篇與四節點範例
 
 - 新增 [第 7 篇](docs/lessons/lesson-07.md)（多節點管線、扇入／扇出）與 `examples/lesson-07/`。
