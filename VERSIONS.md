@@ -28,8 +28,18 @@ Windows 與 macOS **未**列入原文驗證範圍。
 | 7 | 2026-11-07 | `validate` / `build` / `run` 結束碼 0；最終 `total=210`；錯誤輸出名／錯誤節點 id 之 `validate` 結束碼 1（課文聲明，見下文重驗） |
 | 8 | 2026-11-08 | 七份 YAML `validate` 0；`drop-latest` 收到 11/40、`drop-default` 20/40、`backpressure`／`matched`／`clock` 40/40；`clock-no-exit` 以 `timeout` 結束碼 124 為預期 |
 | 9 | 2026-11-09 | `on-failure` 結束碼 0（重啟 2 次）；`never` 與 `exhausted` 結束碼 1 |
+| 10 | 2026-11-10 | 三輪 benchmark 的 CSV 與節錄日誌見 `examples/lesson-10/rounds/`；`raw.yml` 結束碼 0 |
+| 11 | 2026-11-11 | 4 份 YAML `validate` 通過；`operator`／`node`／`mixed` 用 `--stop-after 3s` 結束碼 0、收 25 筆；`multi-op.yml` 刻意示範失敗（結束碼 1） |
+| 12 | 2026-11-12 | 2 份 YAML `validate` 通過；`node.yml`／`operator.yml` 結束碼 0、各 25 筆；不啟用 venv 的負例結束碼 1 |
+| 13 | 2026-11-13 | `cargo test --release` 單元 4＋整合 3 通過；`check.sh` PASS（改壞預期值示範 FAIL 結束碼 1）；`dataflow-bad.yml` 結束碼 1 |
+| 14 | 2026-11-14 | 單機以 coordinator＋兩個 `--machine-id` daemon 模擬兩台機器；**未**跨實體機器、未經防火牆／NAT |
+| 15 | 2026-11-15 | aarch64／armv7 交叉編譯成功；以 qemu-user 模擬板子；**無**實體 ZYNQ 板 |
+| 16 | 2026-11-16 | UART／共享記憶體／DMA 皆為模擬；**無**真實硬體；`dora run` 12 秒結束碼 0 |
+| 17 | 2026-11-17 | candle 與 ort 兩種 MNIST 推論；離線量測 candle 98.09%；無 GPU、未上 ZYNQ |
+| 18 | 2026-11-18 | release／fast／debug、佇列大小、CPU 綁定量測；共用虛擬機雜訊大；無 `perf`、無 flamegraph |
+| 19 | 2026-11-19 | 合成畫面與 H.264 影片檔兩種來源；真攝影機（V4L2）未驗證；未上 ZYNQ |
 
-完整終端機 log **未**納入 repo（含第 6 課課文曾提及的 `run-lifecycle.log`、第 7～9 課作者本機 `run-*.log`）。
+完整終端機 log **未**納入 repo（含第 6 課課文曾提及的 `run-lifecycle.log`、第 7～9 課及第 11～19 課作者本機 `run-*.log`、`run/` 內的日誌與 `out/` session 紀錄）。
 
 ---
 
@@ -103,6 +113,23 @@ Windows 與 macOS **未**實測。
 
 ---
 
+## 本 repo 維護時重驗（2026-11-19，第 11～19 課同步）
+
+環境：Linux x86_64（8 核虛擬機，無 GPU、無攝影機），Rust **1.99.1**（stable），dora-cli **1.1.0**。
+
+| 檢查 | 結果 |
+|------|------|
+| `python3 scripts/check-markdown-nav.py` | **通過**（42 個 `.md`） |
+| `cargo check --all-targets` @ `examples/lesson-11`～`lesson-19`（第 11 課為 `--workspace`） | **通過**（9 個專案；各課 `Cargo.lock` 與作者原檔相同） |
+| `cargo test`（dev profile）@ `examples/lesson-13` | **通過**（單元＋整合測試，0 失敗） |
+| `dora validate` @ 第 11～17、19 課全部 `*.yml`（24 份）與第 18 課以 `gen.sh` 產生的一份 | **通過** |
+| `bash -n` 全部 `.sh`、`py_compile` 第 12 課 Python | **通過** |
+| `dora run`／實際執行／交叉編譯／qemu／真硬體／真攝影機 | **未執行**（依課文與作者紀錄；請自行驗證） |
+
+Windows 與 macOS **未**實測。第 11～19 課的完整執行日誌、`data/`、`clip.mp4` 等產生物未納入本 repo。
+
+---
+
 ## 內容來源包（建檔用）
 
-公開內容最初整理自內部來源 zip（SHA256 `8e8a9cf6431e60a32d43221dbf1badb6ea5b96e3cfb6b411d52a7de67c4fb5a8`）。第 7 課來自 `dora-rs-lesson-07-source-20261107.zip`（SHA256 `ad4fc51d192868f3970cb408388831027277582ed7bfc97aecda337dcc45e02f`）。第 8～9 課來自 `dora-lessons-08-09-source.zip`（SHA256 `59342fe7326c18e1d0734d9d365f002646895f21c251466316d78f798a01bfff`）。第 10 課來自 `lesson10-upload.tar.gz`（SHA256 `b1e8972baa2d111698ab53108f35ac60809b3470d4046271bbdf370c9c868388`）。zip、移轉清單與完整 raw log**未**納入本 repo。
+公開內容最初整理自內部來源 zip（SHA256 `8e8a9cf6431e60a32d43221dbf1badb6ea5b96e3cfb6b411d52a7de67c4fb5a8`）。第 7 課來自 `dora-rs-lesson-07-source-20261107.zip`（SHA256 `ad4fc51d192868f3970cb408388831027277582ed7bfc97aecda337dcc45e02f`）。第 8～9 課來自 `dora-lessons-08-09-source.zip`（SHA256 `59342fe7326c18e1d0734d9d365f002646895f21c251466316d78f798a01bfff`）。第 10 課來自 `lesson10-upload.tar.gz`（SHA256 `b1e8972baa2d111698ab53108f35ac60809b3470d4046271bbdf370c9c868388`）。zip、移轉清單與完整 raw log**未**納入本 repo。 第 11～19 課來自作者的本機教材目錄（`dora-tutorial/`、`dora-poc/lessons/`），不含 `target/`、日誌與大型產生物。

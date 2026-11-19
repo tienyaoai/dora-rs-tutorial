@@ -1,0 +1,33 @@
+# 第 18 篇：producer（200 張/秒）→ worker（filter）→ sink。
+# 用 gen.sh 把兩個 @ 夾住的大寫佔位字串（PROFILE、MODE、SIZE…）換成實際值，產生各次實驗的 yml。
+nodes:
+  - id: producer
+    path: ../target/@PROFILE@/producer
+    env:
+      SIZE: "@SIZE@"
+      N: "@N@"
+    inputs:
+      tick: dora/timer/millis/@MS@
+    outputs:
+      - frame
+
+  - id: worker
+    path: ../target/@PROFILE@/worker
+    env:
+      MODE: @MODE@
+      SLOW_US: "@SLOW@"
+    inputs:
+      frame:
+        source: producer/frame
+        queue_size: @Q@
+    outputs:
+      - result
+
+  - id: sink
+    path: ../target/@PROFILE@/sink
+    env:
+      LABEL: "@LABEL@"
+    inputs:
+      result:
+        source: worker/result
+        queue_size: @Q@

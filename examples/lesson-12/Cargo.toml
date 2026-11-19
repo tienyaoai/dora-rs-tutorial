@@ -1,0 +1,9 @@
+[package]
+name = "lesson-12"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# arrow-v59：讓 sink 能用 dora 內部那一份 Arrow 解開 StructArray / ListArray（第 5 篇）
+dora-node-api = { version = "1.1.0", features = ["arrow-v59"] }
+eyre = "0.6"

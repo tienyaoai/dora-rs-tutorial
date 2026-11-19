@@ -1,0 +1,43 @@
+# 第 19 篇：camera（ffmpeg 解碼 clip.mp4，320×240，約 30 張/秒）→ detect（找框＋candle CNN）→ sink（文字＋存圖＋延遲統計）
+nodes:
+  - id: camera
+    build: cargo build --release --bin camera
+    path: target/release/camera
+    env:
+      SOURCE: ffmpeg
+      FFMPEG_INPUT: "-i clip.mp4"
+      LABELS: clip.labels
+      WIDTH: "320"
+      HEIGHT: "240"
+      FRAMES: "100000"       # 影片讀完就結束
+    inputs:
+      tick: dora/timer/millis/33
+    outputs:
+      - image
+
+  - id: detect
+    build: cargo build --release --bin detect
+    path: target/release/detect
+    env:
+      MODEL: ../lesson-17/models/mnist-cnn.safetensors
+      RAYON_NUM_THREADS: "1"
+    inputs:
+      image:
+        source: camera/image
+        queue_size: 1        # 辨識只要「最新的一張」：追不上時丟舊的，延遲不會越積越大（第 17、18 篇）
+    outputs:
+      - result
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    env:
+      RESULT_DIR: run/out-file
+      SAVE_EVERY: "100"
+    inputs:
+      result:
+        source: detect/result
+        queue_size: 100      # 結果很小（10 個 f32），全部都要記錄，佇列給大一點
+      image:
+        source: camera/image
+        queue_size: 2        # 只為了存圖，丟了沒關係

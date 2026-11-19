@@ -1,0 +1,22 @@
+nodes:
+  - id: double
+    build: cargo build --release -p nodes --bin double-node
+    path: target/release/double-node
+    inputs:
+      tick: dora/timer/millis/100
+    outputs:
+      - value
+
+  - id: acc
+    build: cargo build --release -p nodes --bin acc-node
+    path: target/release/acc-node
+    inputs:
+      value: double/value
+    outputs:
+      - total
+
+  - id: sink
+    build: cargo build --release -p nodes --bin sink
+    path: target/release/sink
+    inputs:
+      total: acc/total

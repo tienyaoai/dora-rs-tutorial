@@ -1,0 +1,219 @@
+{
+  "id": "printer",
+  "recording_status": {
+    "state": "clean"
+  },
+  "events": [
+    {
+      "id": "avg",
+      "time_offset_secs": 0.008426413,
+      "data": [
+        2.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 0.102403552,
+      "data": [
+        3.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 0.202782952,
+      "data": [
+        4.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 0.401722201,
+      "data": [
+        6.666666666666667
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 0.50157768,
+      "data": [
+        9.333333333333334
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 0.601567302,
+      "data": [
+        12.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 0.601690826,
+      "data": [
+        "seq=7 avg=12.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 0.70191148,
+      "data": [
+        14.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 0.702000026,
+      "data": [
+        "seq=8 avg=14.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 0.801960595,
+      "data": [
+        16.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 0.802048587,
+      "data": [
+        "seq=9 avg=16.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 0.902026035,
+      "data": [
+        18.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 0.902132419,
+      "data": [
+        "seq=10 avg=18.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 1.002474864,
+      "data": [
+        20.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 1.002594296,
+      "data": [
+        "seq=11 avg=20.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 1.101552949,
+      "data": [
+        22.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 1.101653439,
+      "data": [
+        "seq=12 avg=22.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 1.208498829,
+      "data": [
+        24.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 1.208640308,
+      "data": [
+        "seq=13 avg=24.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 1.304286603,
+      "data": [
+        26.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 1.304640811,
+      "data": [
+        "seq=14 avg=26.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "avg",
+      "time_offset_secs": 1.401747935,
+      "data": [
+        28.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "alarm",
+      "time_offset_secs": 1.401857418,
+      "data": [
+        "seq=15 avg=28.00 > limit=10.00"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "type": "Stop",
+      "time_offset_secs": 1.4914223070000001
+    }
+  ]
+}

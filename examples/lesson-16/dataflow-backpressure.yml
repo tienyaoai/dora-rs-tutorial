@@ -1,0 +1,45 @@
+# 第 16 篇（背壓實驗）：讓 uart 1 秒才收一次、shm 200 ms 才讀一次、dma 200 ms 才送一次，觀察三種背壓策略。
+nodes:
+  - id: uart
+    build: cargo build --release --bin uart-node
+    path: target/release/uart-node
+    env:
+      SERIAL_PORT: /tmp/lesson16/ttyFAKE0   # 真裝置：/dev/ttyUSB0、/dev/ttyPS1（ZYNQ PS UART1）…
+      BAUD: "115200"
+      QUEUE: "16"                       # channel 只放 16 筆：1 秒有 50 筆進來，必定溢出
+    inputs:
+      tick: dora/timer/millis/1000    # 故意 1 秒才收一次
+    outputs:
+      - temp
+      - status
+
+  - id: shm
+    build: cargo build --release --bin shm-node
+    path: target/release/shm-node
+    inputs:
+      tick: dora/timer/millis/200     # ring 只有 8 格、100 fps：200 ms 會被寫者繞過一圈多
+    outputs:
+      - frame
+      - status
+
+  - id: dma
+    build: cargo build --release --bin dma-node
+    path: target/release/dma-node
+    env:
+      DMA_SIM: "1"
+    inputs:
+      tick: dora/timer/millis/200     # 主執行緒慢：兩塊 buffer 很快都在等它還
+    outputs:
+      - frame
+      - status
+
+  - id: monitor
+    build: cargo build --release --bin monitor
+    path: target/release/monitor
+    inputs:
+      uart_temp: uart/temp
+      uart_status: uart/status
+      shm_frame: shm/frame
+      shm_status: shm/status
+      dma_frame: dma/frame
+      dma_status: dma/status

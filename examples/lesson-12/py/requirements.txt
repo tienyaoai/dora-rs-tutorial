@@ -1,0 +1,3 @@
+dora-rs==1.1.0
+pyarrow
+numpy

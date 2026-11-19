@@ -1,0 +1,147 @@
+{
+  "id": "smoother",
+  "recording_status": {
+    "state": "clean"
+  },
+  "events": [
+    {
+      "id": "value",
+      "time_offset_secs": 0.00162603,
+      "data": [
+        2.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.101585076,
+      "data": [
+        4.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.201823932,
+      "data": [
+        6.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.301397797,
+      "data": [
+        "oops"
+      ],
+      "data_type": "Utf8",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.400849395,
+      "data": [
+        10.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.501072869,
+      "data": [
+        12.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.600942527,
+      "data": [
+        14.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.701324937,
+      "data": [
+        16.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.80140216,
+      "data": [
+        18.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 0.901386738,
+      "data": [
+        20.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 1.001442366,
+      "data": [
+        22.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 1.100933638,
+      "data": [
+        24.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 1.20144837,
+      "data": [
+        26.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 1.3018552030000001,
+      "data": [
+        28.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "id": "value",
+      "time_offset_secs": 1.401033342,
+      "data": [
+        30.0
+      ],
+      "data_type": "Float64",
+      "type": "Input"
+    },
+    {
+      "type": "Stop",
+      "time_offset_secs": 1.491317016
+    }
+  ]
+}

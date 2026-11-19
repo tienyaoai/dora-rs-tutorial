@@ -1,0 +1,18 @@
+[package]
+name = "lesson-15"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dora-node-api = "1.1.0"
+eyre = "0.6"
+libc = "0.2"
+
+# 給 ZYNQ 用的「小檔案」設定：cargo build --profile zynq
+[profile.zynq]
+inherits = "release"
+opt-level = "s"        # 以大小為優先（"z" 更小但通常更慢）
+lto = "fat"            # 跨 crate 最佳化，順便丟掉沒用到的程式碼
+codegen-units = 1      # 單一編譯單元，最佳化較徹底（編譯較慢）
+panic = "abort"        # 不帶 unwind 表；panic 直接結束行程
+strip = "symbols"      # 連結後去掉符號表（等同 strip）

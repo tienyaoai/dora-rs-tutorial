@@ -1,0 +1,16 @@
+[package]
+name = "lesson-18"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dora-node-api = "1.1.0"
+eyre = "0.6"
+
+# 內建的 release 就是預設：opt-level=3、lto=false、codegen-units=16、panic=unwind
+# 下面這個自訂 profile 繼承 release，再打開 fat LTO、單一 codegen unit、panic=abort
+[profile.fast]
+inherits = "release"
+lto = "fat"
+codegen-units = 1
+panic = "abort"

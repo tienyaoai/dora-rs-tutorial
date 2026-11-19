@@ -1,0 +1,27 @@
+nodes:
+  - id: source
+    build: cargo build --release --bin source
+    path: target/release/source
+    inputs:
+      tick: dora/timer/millis/100
+    outputs:
+      - value
+
+  - id: smoother
+    build: cargo build --release --bin lesson-13
+    path: target/release/lesson-13
+    env:
+      WINDOW: 0
+      LIMIT: 10
+    inputs:
+      value: source/value
+    outputs:
+      - avg
+      - alarm
+
+  - id: printer
+    build: cargo build --release --bin printer
+    path: target/release/printer
+    inputs:
+      avg: smoother/avg
+      alarm: smoother/alarm

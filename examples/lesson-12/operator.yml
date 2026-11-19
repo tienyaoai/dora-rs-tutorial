@@ -1,0 +1,26 @@
+nodes:
+  - id: producer
+    build: cargo build --release --bin producer
+    path: target/release/producer
+    inputs:
+      tick: dora/timer/millis/100
+    outputs:
+      - samples
+
+  # Python operator：一個 runtime 節點一個 operator（v1.1.0 限制，見第 11 篇）
+  - id: scale-rt
+    operators:
+      - id: scale
+        python: py/op_scale.py
+        inputs:
+          samples: producer/samples
+        outputs:
+          - scaled
+          - summary
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    inputs:
+      scaled: scale-rt/scale/scaled      # 三段式：節點/operator/輸出
+      summary: scale-rt/scale/summary

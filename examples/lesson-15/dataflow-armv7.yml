@@ -1,0 +1,13 @@
+# 第 15 篇：ZYNQ-7000（armv7 armhf）版，直接用交叉編譯產物
+nodes:
+  - id: sysinfo
+    path: target/armv7-unknown-linux-gnueabihf/release/sysinfo
+    inputs:
+      tick: dora/timer/millis/200
+    outputs:
+      - info
+
+  - id: sink
+    path: target/armv7-unknown-linux-gnueabihf/release/sink
+    inputs:
+      info: sysinfo/info

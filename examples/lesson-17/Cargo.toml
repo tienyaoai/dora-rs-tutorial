@@ -1,0 +1,23 @@
+[package]
+name = "lesson-17"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+default = ["onnx"]
+# ort（ONNX Runtime）另外開一個 feature：拿掉它（--no-default-features）就只編 candle，
+# 交叉編譯到 ZYNQ 時很有用（見重點說明 6）。
+onnx = ["dep:ort"]
+
+[dependencies]
+dora-node-api = "1.1.0"
+eyre = "0.6"
+candle-core = "0.11"
+candle-nn = "0.11"
+# 預設 feature 的 tls-native 會拉進 openssl-sys（要系統裝 libssl-dev＋pkg-config），
+# 這台機器沒有，所以關掉預設 feature，改用 rustls 下載 ONNX Runtime 預編譯檔（見常見錯誤 1）。
+ort = { version = "2.0.0-rc.15", optional = true, default-features = false, features = ["std", "download-binaries", "copy-dylibs", "tls-rustls", "api-24"] }
+
+[[bin]]
+name = "infer-ort"
+required-features = ["onnx"]

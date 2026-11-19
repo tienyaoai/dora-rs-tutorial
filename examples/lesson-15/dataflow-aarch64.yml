@@ -1,0 +1,13 @@
+# 第 15 篇：直接用交叉編譯好的 aarch64 執行檔（沒有 build:，dora 不會在目標機上跑 cargo）
+nodes:
+  - id: sysinfo
+    path: target/aarch64-unknown-linux-gnu/release/sysinfo
+    inputs:
+      tick: dora/timer/millis/200
+    outputs:
+      - info
+
+  - id: sink
+    path: target/aarch64-unknown-linux-gnu/release/sink
+    inputs:
+      info: sysinfo/info

@@ -1,0 +1,44 @@
+# 第 16 篇：三種硬體節點 → monitor。先在另一個終端機跑 fake-hw（模擬硬體），再 dora run。
+nodes:
+  - id: uart
+    build: cargo build --release --bin uart-node
+    path: target/release/uart-node
+    env:
+      SERIAL_PORT: /tmp/lesson16/ttyFAKE0   # 真裝置：/dev/ttyUSB0、/dev/ttyPS1（ZYNQ PS UART1）…
+      BAUD: "115200"
+    inputs:
+      tick: dora/timer/millis/100     # 每 100 ms 把累積的讀值打包送一次
+    outputs:
+      - temp
+      - status
+
+  - id: shm
+    build: cargo build --release --bin shm-node
+    path: target/release/shm-node
+    inputs:
+      tick: dora/timer/millis/5
+    outputs:
+      - frame
+      - status
+
+  - id: dma
+    build: cargo build --release --bin dma-node
+    path: target/release/dma-node
+    env:
+      DMA_SIM: "1"                    # 真板子拿掉，並設 DMA_REGS=/dev/uio0 等（見 dma-node.rs）
+    inputs:
+      tick: dora/timer/millis/5
+    outputs:
+      - frame
+      - status
+
+  - id: monitor
+    build: cargo build --release --bin monitor
+    path: target/release/monitor
+    inputs:
+      uart_temp: uart/temp
+      uart_status: uart/status
+      shm_frame: shm/frame
+      shm_status: shm/status
+      dma_frame: dma/frame
+      dma_status: dma/status
