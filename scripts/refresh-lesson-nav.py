@@ -26,18 +26,29 @@ NEXT_HREF = {
     7: "lesson-08.md",
     8: "lesson-09.md",
     9: "lesson-10.md",
+    10: "lesson-11.md",
+    11: "lesson-12.md",
+    12: "lesson-13.md",
+    13: "lesson-14.md",
+    14: "lesson-15.md",
+    15: "lesson-16.md",
+    16: "lesson-17.md",
+    17: "lesson-18.md",
+    18: "lesson-19.md",
 }
+
+LAST_PUBLISHED = 19
 
 
 def nav_block(n: int) -> str:
     lines = ["**導覽**", "", "- [返回教材總覽](../../README.md)"]
     if n > 1:
         lines.append(f"- 上一課：[第 {n - 1} 篇](lesson-{n - 1:02d}.md)")
-    if n < 10:
+    if n < LAST_PUBLISHED:
         lines.append(f"- 下一課：[第 {n + 1} 篇 →]({NEXT_HREF[n]})")
     else:
         lines.append(
-            "- 下一課：第 11 篇**尚未發布**（僅規劃；見"
+            f"- 下一課：第 {n + 1} 篇**尚未發布**（僅規劃；見"
             " [課程大綱](../../README.md#課程大綱20-篇規劃)）"
         )
     if n == 2:
@@ -70,7 +81,7 @@ def extract_body(text: str) -> str:
         raise ValueError("missing ## 重點說明")
     body = text[m.start() :]
     body = re.sub(r"\n\*\*導覽：\*\*[^\n]+\n", "", body)
-    body = re.sub(r"\n---\n[\s\S]*$", "", body)
+    body = re.sub(r"\n---\n\n\*\*導覽\*\*[\s\S]*$", "", body)
     return body.rstrip() + "\n"
 
 
@@ -114,7 +125,7 @@ def refresh_lesson(path: Path, n: int) -> None:
 
 
 def main() -> None:
-    for n in range(1, 11):
+    for n in range(1, LAST_PUBLISHED + 1):
         refresh_lesson(LESSONS / f"lesson-{n:02d}.md", n)
 
 

@@ -1,0 +1,15 @@
+# 第 15 篇（本機版）：x86_64 上用同一份原始碼跑通
+nodes:
+  - id: sysinfo
+    build: cargo build --release --bin sysinfo
+    path: target/release/sysinfo
+    inputs:
+      tick: dora/timer/millis/200
+    outputs:
+      - info
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    inputs:
+      info: sysinfo/info

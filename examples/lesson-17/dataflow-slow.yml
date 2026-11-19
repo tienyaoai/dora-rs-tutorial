@@ -1,0 +1,57 @@
+# 第 17 篇：模型太慢、追不上攝影機時的幾種策略。
+# 五個 candle 節點都用 SLOW_MS=20（每次呼叫模型後多睡 20 ms，模擬重模型，上限約 50 次呼叫/秒），
+# 攝影機一樣 200 張/秒，只有佇列設定、BATCH、MAX_AGE_MS 不同。
+nodes:
+  - id: camera
+    build: cargo build --release --bin camera
+    path: target/release/camera
+    inputs:
+      tick: dora/timer/millis/5
+    outputs:
+      - image
+
+  - id: q10                    # 預設：queue_size 10、drop_oldest
+    build: cargo build --release --bin infer-candle
+    path: target/release/infer-candle
+    env: { SLOW_MS: "20", RAYON_NUM_THREADS: "1" }
+    inputs:
+      image: camera/image
+    outputs: [result]
+
+  - id: q1                     # 只留最新一張
+    path: target/release/infer-candle
+    env: { SLOW_MS: "20", RAYON_NUM_THREADS: "1" }
+    inputs:
+      image: { source: camera/image, queue_size: 1 }
+    outputs: [result]
+
+  - id: bp                     # backpressure：不丟，緩衝上限 10×10＝100 筆
+    path: target/release/infer-candle
+    env: { SLOW_MS: "20", RAYON_NUM_THREADS: "1" }
+    inputs:
+      image: { source: camera/image, queue_size: 10, queue_policy: backpressure }
+    outputs: [result]
+
+  - id: batch8                 # 順手批次，最多 8 張一起推
+    path: target/release/infer-candle
+    env: { SLOW_MS: "20", RAYON_NUM_THREADS: "1", BATCH: "8" }
+    inputs:
+      image: { source: camera/image, queue_size: 10 }
+    outputs: [result]
+
+  - id: age30                  # 預設佇列，但擷取超過 30 ms 的影像直接丟
+    path: target/release/infer-candle
+    env: { SLOW_MS: "20", RAYON_NUM_THREADS: "1", MAX_AGE_MS: "30" }
+    inputs:
+      image: camera/image
+    outputs: [result]
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    inputs:
+      q10: q10/result
+      q1: q1/result
+      bp: bp/result
+      batch8: batch8/result
+      age30: age30/result

@@ -1,0 +1,43 @@
+# 第 17 篇：假攝影機（MNIST 測試圖，200 張/秒）→ candle 與 ONNX Runtime 兩個推論節點 → sink
+nodes:
+  - id: camera
+    build: cargo build --release --bin camera
+    path: target/release/camera
+    inputs:
+      tick: dora/timer/millis/5
+    outputs:
+      - image
+
+  - id: infer-candle
+    build: cargo build --release --bin infer-candle
+    path: target/release/infer-candle
+    env:
+      MODEL: models/mnist-cnn.safetensors
+      BATCH: "1"
+      RAYON_NUM_THREADS: "1"
+    inputs:
+      image:
+        source: camera/image
+        queue_size: 2        # 推論節點只需要「最近的」幾張，不要讓舊影像排長隊
+    outputs:
+      - result
+
+  - id: infer-ort
+    build: cargo build --release --bin infer-ort
+    path: target/release/infer-ort
+    env:
+      MODEL: models/mnist-12.onnx
+      ORT_THREADS: "1"
+    inputs:
+      image:
+        source: camera/image
+        queue_size: 2
+    outputs:
+      - result
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    inputs:
+      candle: infer-candle/result
+      ort: infer-ort/result

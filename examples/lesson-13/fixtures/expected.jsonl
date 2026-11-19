@@ -1,0 +1,4 @@
+{"id":"avg","data":[4.0],"data_type":"Float64"}
+{"id":"avg","data":[6.0],"data_type":"Float64"}
+{"id":"avg","data":[14.0],"data_type":"Float64"}
+{"id":"alarm","data":["seq=3 avg=14.00 > limit=10.00"],"data_type":"Utf8"}

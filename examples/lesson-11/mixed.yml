@@ -1,0 +1,25 @@
+nodes:
+  # operator 與 node 可以混接：上游是 operator，下游是一般 node
+  - id: double-rt
+    operators:
+      - id: double
+        build: cargo build --release -p op-double
+        shared-library: target/release/op_double
+        inputs:
+          tick: dora/timer/millis/100
+        outputs:
+          - value
+
+  - id: acc
+    build: cargo build --release -p nodes --bin acc-node
+    path: target/release/acc-node
+    inputs:
+      value: double-rt/double/value
+    outputs:
+      - total
+
+  - id: sink
+    build: cargo build --release -p nodes --bin sink
+    path: target/release/sink
+    inputs:
+      total: acc/total

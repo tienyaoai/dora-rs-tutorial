@@ -1,0 +1,19 @@
+# 第 15 篇：sysinfo 派到 ZYNQ（aarch64 daemon），sink 留在 x86_64 工作站
+nodes:
+  - id: sysinfo
+    deploy:
+      machine: zynq                          # 對應板子上 dora daemon --machine-id zynq
+    # 沒有 build:——板子上沒有 cargo，執行檔事先交叉編譯、用 scp 放好
+    path: /opt/dora-nodes/lesson-15/sysinfo  # 在「板子」的檔案系統上解析
+    inputs:
+      tick: dora/timer/millis/200
+    outputs:
+      - info
+
+  - id: sink
+    deploy:
+      machine: workstation
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    inputs:
+      info: sysinfo/info

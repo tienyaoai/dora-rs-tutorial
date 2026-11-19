@@ -6,7 +6,7 @@
 
 - [返回教材總覽](../../README.md)
 - 上一課：[第 9 篇](lesson-09.md)
-- 下一課：第 11 篇**尚未發布**（僅規劃；見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 下一課：[第 11 篇 →](lesson-11.md)
 - 本課範例：[examples/lesson-10/](../../examples/lesson-10/)
 
 ## 目錄
@@ -458,5 +458,5 @@ dora 上游 monorepo 內附 `examples/benchmark`（tag `v1.1.0`），它也用 `
 
 - [返回教材總覽](../../README.md)
 - 上一課：[第 9 篇](lesson-09.md)
-- 下一課：第 11 篇**尚未發布**（僅規劃；見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 下一課：[第 11 篇 →](lesson-11.md)
 - 本課範例：[examples/lesson-10/](../../examples/lesson-10/)

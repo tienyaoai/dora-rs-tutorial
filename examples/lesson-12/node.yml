@@ -1,0 +1,25 @@
+nodes:
+  - id: producer
+    build: cargo build --release --bin producer
+    path: target/release/producer
+    inputs:
+      tick: dora/timer/millis/100
+    outputs:
+      - samples
+
+  # Python 節點：path 指向 .py，dora 會用找到的 python 直譯器 `python -u` 執行它
+  - id: scale
+    build: pip install -r py/requirements.txt
+    path: py/scale.py
+    inputs:
+      samples: producer/samples
+    outputs:
+      - scaled
+      - summary
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    inputs:
+      scaled: scale/scaled
+      summary: scale/summary

@@ -1,0 +1,13 @@
+[package]
+name = "lesson-19"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dora-node-api = "1.1.0"
+eyre = "0.6"
+candle-core = "0.11"
+png = "0.18"
+# 直接沿用第 17 篇的程式庫：MNIST 讀檔、小型 CNN（Net）、前處理、top1、Lat。
+# 關掉預設的 onnx feature，就不會編 ort（也就不需要第 17 篇的 libstdc++ 繞道）。
+lesson-17 = { path = "../lesson-17", default-features = false }

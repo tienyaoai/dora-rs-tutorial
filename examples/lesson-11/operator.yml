@@ -1,0 +1,27 @@
+nodes:
+  # dora v1.1.0：一個 runtime 節點只能放「一個」operator
+  - id: double-rt
+    operators:
+      - id: double
+        build: cargo build --release -p op-double
+        shared-library: target/release/op_double   # 會自動補成 libop_double.so
+        inputs:
+          tick: dora/timer/millis/100
+        outputs:
+          - value
+
+  - id: acc-rt
+    operators:
+      - id: acc
+        build: cargo build --release -p op-acc
+        shared-library: target/release/op_acc
+        inputs:
+          value: double-rt/double/value   # 三段式：節點/operator/輸出
+        outputs:
+          - total
+
+  - id: sink
+    build: cargo build --release -p nodes --bin sink
+    path: target/release/sink
+    inputs:
+      total: acc-rt/acc/total

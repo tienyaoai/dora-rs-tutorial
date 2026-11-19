@@ -1,0 +1,8 @@
+[workspace]
+resolver = "3"
+members = ["op-double", "op-acc", "nodes"]
+
+[workspace.dependencies]
+dora-operator-api = "1.1.0"
+dora-node-api = "1.1.0"
+eyre = "0.6"

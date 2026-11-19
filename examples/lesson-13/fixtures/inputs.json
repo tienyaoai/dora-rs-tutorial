@@ -1,0 +1,9 @@
+{
+  "id": "smoother",
+  "events": [
+    { "time_offset_secs": 0.00, "type": "Input", "id": "value", "metadata": { "seq": { "Integer": 1 } }, "data": [4.0],  "data_type": "Float64" },
+    { "time_offset_secs": 0.01, "type": "Input", "id": "value", "metadata": { "seq": { "Integer": 2 } }, "data": [8.0],  "data_type": "Float64" },
+    { "time_offset_secs": 0.02, "type": "Input", "id": "value", "metadata": { "seq": { "Integer": 3 } }, "data": [30.0], "data_type": "Float64" },
+    { "time_offset_secs": 0.03, "type": "Stop" }
+  ]
+}

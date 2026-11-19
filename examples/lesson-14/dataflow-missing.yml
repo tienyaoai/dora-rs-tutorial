@@ -1,0 +1,30 @@
+# 第 14 篇：一條 dataflow 拆到兩個 daemon（edge / compute）
+nodes:
+  - id: sensor
+    deploy:
+      machine: zynq            # 故意指定一台沒上線的機器
+    build: cargo build --release --bin sensor
+    path: target/release/sensor
+    inputs:
+      tick: dora/timer/millis/200
+    outputs:
+      - temp
+
+  - id: aggregator
+    deploy:
+      labels:                  # 用標籤挑機器：daemon 用 --labels role=compute 啟動
+        role: compute
+    build: cargo build --release --bin aggregator
+    path: target/release/aggregator
+    inputs:
+      temp: sensor/temp
+    outputs:
+      - summary
+
+  - id: logger
+    deploy:
+      machine: edge
+    build: cargo build --release --bin logger
+    path: target/release/logger
+    inputs:
+      summary: aggregator/summary

@@ -1,0 +1,87 @@
+{
+  "id": "source",
+  "recording_status": {
+    "state": "clean"
+  },
+  "events": [
+    {
+      "id": "tick",
+      "time_offset_secs": 0.001223464,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.100999762,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.201411155,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.30102674,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.400548753,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.500740156,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.600767199,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.700972084,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.80087344,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 0.901002873,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 1.001047548,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 1.100564305,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 1.2008540779999999,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 1.301285234,
+      "type": "Input"
+    },
+    {
+      "id": "tick",
+      "time_offset_secs": 1.400625751,
+      "type": "Input"
+    },
+    {
+      "type": "Stop",
+      "time_offset_secs": 1.491283518
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-19 — 第 11～19 篇與範例
+
+- 新增 [第 11 篇](docs/lessons/lesson-11.md)（Operator vs Node）、[第 12 篇](docs/lessons/lesson-12.md)（混用 Python 節點）、[第 13 篇](docs/lessons/lesson-13.md)（測試與除錯）、[第 14 篇](docs/lessons/lesson-14.md)（分散式部署）、[第 15 篇](docs/lessons/lesson-15.md)（交叉編譯到 ZYNQ／aarch64）、[第 16 篇](docs/lessons/lesson-16.md)（自訂硬體節點）、[第 17 篇](docs/lessons/lesson-17.md)（AI 推論節點）、[第 18 篇](docs/lessons/lesson-18.md)（效能調校）、[第 19 篇](docs/lessons/lesson-19.md)（綜合專題上）與 `examples/lesson-11/`～`lesson-19/`。
+- 更新 `README.md`（已發布 1～19 課）、第 10 課導覽與 `scripts/refresh-lesson-nav.py`（支援第 11～19 課；頁尾切除改為只切最後的導覽區塊，避免課文內的 `---` 被截斷）。
+- 路徑改為 repo 相對路徑；移除本機絕對路徑；課文內「完成後保留／沒有 push」之類的作業備註一句已刪除。
+- 不納入：`target/`、`*.log`、`run/`、`out/`、MNIST `data/`、`clip.mp4`／`clip.labels`、第 17 課作者機器專用的 `.cargo/config.toml` 與 `linkfix/`（課文有說明）。
+- 維護時重驗紀錄見 `VERSIONS.md` 與本輪 PR 描述。
+
 ## 2026-11-10 — 第 10 篇與零拷貝 benchmark 範例
 
 - 新增 [第 10 篇](docs/lessons/lesson-10.md)（共享記憶體門檻、`send_output_raw`、benchmark）與 `examples/lesson-10/`（三份 YAML、`rounds/` 重現證據）。

@@ -1,0 +1,29 @@
+# 第 14 篇對照組：aggregator 改用 machine 指定（不用 labels）
+nodes:
+  - id: sensor
+    deploy:
+      machine: edge            # 指定機器：daemon 用 --machine-id edge 啟動
+    build: cargo build --release --bin sensor
+    path: target/release/sensor
+    inputs:
+      tick: dora/timer/millis/200
+    outputs:
+      - temp
+
+  - id: aggregator
+    deploy:
+      machine: gpu-box         # 改成直接指定機器 ID
+    build: cargo build --release --bin aggregator
+    path: target/release/aggregator
+    inputs:
+      temp: sensor/temp
+    outputs:
+      - summary
+
+  - id: logger
+    deploy:
+      machine: edge
+    build: cargo build --release --bin logger
+    path: target/release/logger
+    inputs:
+      summary: aggregator/summary
