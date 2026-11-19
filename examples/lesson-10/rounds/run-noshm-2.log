@@ -1,0 +1,40 @@
+producer: DEBUG    building node
+producer: INFO     running build command: `cargo build --release --bin producer` in /workspace/dora-poc/lessons/lesson-10
+producer: stdout       Finished `release` profile [optimized] target(s) in 0.18s
+sink: DEBUG    building node
+sink: INFO     running build command: `cargo build --release --bin sink` in /workspace/dora-poc/lessons/lesson-10
+sink: stdout       Finished `release` profile [optimized] target(s) in 0.17s
+08:08:51 DEBUG  producer: daemon::spawner spawning node
+08:08:51 DEBUG  sink: daemon::spawner spawning node
+
+08:08:51 INFO   [dora]: dora daemon finished building nodes, spawning...
+
+08:08:51 INFO   producer: spawner spawning `/workspace/dora-poc/lessons/lesson-10/target/release/producer` in `/workspace/dora-poc/lessons/lesson-10`
+08:08:51 DEBUG  producer: spawner spawned node with pid 436997
+08:08:51 INFO   sink: spawner spawning `/workspace/dora-poc/lessons/lesson-10/target/release/sink` in `/workspace/dora-poc/lessons/lesson-10`
+08:08:51 DEBUG  sink: spawner spawned node with pid 436998
+08:08:51 INFO   producer: daemon node is ready
+08:08:51 INFO   sink: daemon node is ready
+08:08:51 INFO   [dora]: daemon all nodes are ready, starting dataflow
+08:08:51 stdout producer: producer MODE=raw N=100 zero_copy_threshold=1000000000 位元組
+08:08:52 stdout producer: producer size=    1024  send() avg=    64.2µs  p50=    62.1µs  max=   165.6µs
+08:08:52 stdout producer: producer size=    4096  send() avg=    66.3µs  p50=    64.6µs  max=   222.7µs
+08:08:53 stdout producer: producer size=   65536  send() avg=    76.6µs  p50=    75.7µs  max=   236.8µs
+08:08:54 stdout producer: producer size= 1048576  send() avg=     1.4ms  p50=     1.3ms  max=     9.2ms
+08:08:55 stdout producer: producer size= 4194304  send() avg=     4.7ms  p50=     4.6ms  max=     7.6ms
+08:08:56 stdout producer: producer 全部 500 筆送完，結束
+08:08:56 stdout sink: sink 輸入 frame 已關閉
+08:08:56 stdout sink: sink [noshm] READ=borrow（keep=57055）
+08:08:56 stdout sink:     size     n     lat p50     lat p99    read p50   read MB/s   bad
+08:08:56 stdout sink:     1024   100     604.5µs     931.9µs     706.0ns        1450     0
+08:08:56 stdout sink:     4096   100     604.1µs     945.8µs     733.0ns        5588     0
+08:08:56 stdout sink:    65536   100     563.9µs       1.0ms     659.0ns       99448     0
+08:08:56 stdout sink:  1048576   100       1.3ms       2.3ms     703.0ns     1491573     0
+08:08:56 stdout sink:  4194304   100       3.3ms       7.5ms     754.0ns     5562737     0
+08:08:56 stdout sink: sink 結果已寫入 result-noshm.csv
+08:08:56 DEBUG  producer: daemon handling node stop with exit status Success (restart: false, restart_count: 0)
+08:08:56 INFO   producer: daemon producer finished successfully
+08:08:56 DEBUG  sink: daemon handling node stop with exit status Success (restart: false, restart_count: 0)
+08:08:56 INFO   sink: daemon sink finished successfully
+08:08:56 INFO   [dora]: daemon dataflow finished on machine `01a1c2c9-4050-75cb-9a7e-b5d775891ada`
+2026-11-10T00:08:56.253157Z  INFO run_inner: dora_daemon: exiting daemon because all required dataflows are finished health_check_interval_duration=None self.daemon_id=DaemonId { machine_id: None, uuid: 01a1c2c9-4050-75cb-9a7e-b5d775891ada }

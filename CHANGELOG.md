@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-10 — 第 10 篇與零拷貝 benchmark 範例
+
+- 新增 [第 10 篇](docs/lessons/lesson-10.md)（共享記憶體門檻、`send_output_raw`、benchmark）與 `examples/lesson-10/`（三份 YAML、`rounds/` 重現證據）。
+- 更新 `README.md`（已發布 1～10 課）、第 9 課導覽與 `scripts/refresh-lesson-nav.py`（支援第 10 課）。
+- 路徑改為 repo 相對路徑；移除本機絕對路徑引用；`rounds/*.log` 以 `.gitignore` 例外納入。
+- 內容來源：`lesson10-upload.tar.gz`（SHA256 `b1e8972baa2d111698ab53108f35ac60809b3470d4046271bbdf370c9c868388`）。
+- 維護時重驗紀錄見 `VERSIONS.md` 與本輪 PR 描述。
+
 ## 2026-11-09 — 第 8～9 篇與背壓／重啟範例
 
 - 新增 [第 8 篇](docs/lessons/lesson-08.md)（計時器、佇列策略、背壓）與 `examples/lesson-08/`（七份 YAML）。

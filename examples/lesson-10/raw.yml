@@ -1,0 +1,21 @@
+nodes:
+  - id: producer
+    build: cargo build --release --bin producer
+    path: target/release/producer
+    env:
+      MODE: raw
+      N: "100"
+    outputs:
+      - frame
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    env:
+      READ: borrow
+      LABEL: raw
+      CSV: result-raw.csv
+    inputs:
+      frame:
+        source: producer/frame
+        queue_size: 100

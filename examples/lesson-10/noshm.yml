@@ -1,0 +1,22 @@
+nodes:
+  - id: producer
+    build: cargo build --release --bin producer
+    path: target/release/producer
+    env:
+      MODE: raw
+      N: "100"
+      DORA_ZERO_COPY_THRESHOLD: "1000000000"   # 門檻調到 1GB = 永遠不用共享記憶體
+    outputs:
+      - frame
+
+  - id: sink
+    build: cargo build --release --bin sink
+    path: target/release/sink
+    env:
+      READ: borrow
+      LABEL: noshm
+      CSV: result-noshm.csv
+    inputs:
+      frame:
+        source: producer/frame
+        queue_size: 100

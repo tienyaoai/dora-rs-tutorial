@@ -6,7 +6,7 @@
 
 - [返回教材總覽](../../README.md)
 - 上一課：[第 8 篇](lesson-08.md)
-- 下一課：第 10 篇**尚未發布**（僅規劃；零拷貝大資料等見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 下一課：[第 10 篇 →](lesson-10.md)
 - 本課範例：[examples/lesson-09/](../../examples/lesson-09/)
 
 ## 目錄
@@ -351,7 +351,7 @@ sink:   sink 總結：收到 6 筆 [1, 2, 3, 4, 6, 11]；NodeRestarted 1 次、N
 2. 把 worker 改成 `restart_policy: always`、`max_restarts: 2`，並讓 worker 收到 seq=3 就**正常** `return Ok(())`。預測：它會重啟幾次？sink 收到哪些序號？跑跑看驗證你的預測。
 3. 進階：讓 worker 在重生時（`restart_count() > 0`）透過新輸出 `restarted` 送出自己的 `restart_count`，在 sink 印出來，跟 `NodeRestarted` 的通知對照。
 
-下一篇：第 10 篇**尚未發布**（僅規劃；零拷貝大資料與 benchmark 等見 [課程大綱](../../README.md#課程大綱20-篇規劃)）。
+下一篇：[第 10 篇：零拷貝大資料與 benchmark——影格變大時，資料到底被搬了幾次](lesson-10.md)。
 
 ---
 
@@ -359,5 +359,5 @@ sink:   sink 總結：收到 6 筆 [1, 2, 3, 4, 6, 11]；NodeRestarted 1 次、N
 
 - [返回教材總覽](../../README.md)
 - 上一課：[第 8 篇](lesson-08.md)
-- 下一課：第 10 篇**尚未發布**（僅規劃；零拷貝大資料等見 [課程大綱](../../README.md#課程大綱20-篇規劃)）
+- 下一課：[第 10 篇 →](lesson-10.md)
 - 本課範例：[examples/lesson-09/](../../examples/lesson-09/)

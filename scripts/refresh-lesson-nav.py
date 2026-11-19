@@ -25,6 +25,7 @@ NEXT_HREF = {
     6: "lesson-07.md",
     7: "lesson-08.md",
     8: "lesson-09.md",
+    9: "lesson-10.md",
 }
 
 
@@ -32,11 +33,11 @@ def nav_block(n: int) -> str:
     lines = ["**導覽**", "", "- [返回教材總覽](../../README.md)"]
     if n > 1:
         lines.append(f"- 上一課：[第 {n - 1} 篇](lesson-{n - 1:02d}.md)")
-    if n < 9:
+    if n < 10:
         lines.append(f"- 下一課：[第 {n + 1} 篇 →]({NEXT_HREF[n]})")
     else:
         lines.append(
-            "- 下一課：第 10 篇**尚未發布**（僅規劃；零拷貝大資料等見"
+            "- 下一課：第 11 篇**尚未發布**（僅規劃；見"
             " [課程大綱](../../README.md#課程大綱20-篇規劃)）"
         )
     if n == 2:
@@ -113,7 +114,7 @@ def refresh_lesson(path: Path, n: int) -> None:
 
 
 def main() -> None:
-    for n in range(1, 10):
+    for n in range(1, 11):
         refresh_lesson(LESSONS / f"lesson-{n:02d}.md", n)
 
 
