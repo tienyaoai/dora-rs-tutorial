@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-20 — 第 20 篇（最終篇），系列完結
+
+- 新增 [第 20 篇](docs/lessons/lesson-20.md)（綜合專題下：顯示節點、完整管線整合與 ZYNQ 部署收尾、20 篇總複習）與 `examples/lesson-20/`。
+- 更新 `README.md`（已發布 1～20 課，系列完結）、第 19 課導覽、第 10 課頁尾的「下一篇」連結與 `scripts/refresh-lesson-nav.py`（支援第 20 課，並標示最終篇）。
+- 路徑改為 repo 相對路徑；移除本機絕對路徑；課文內作業備註（清理本機暫存、「沒有 push」等）已刪除。
+- 不納入：`target/`、`*.log`、`run/`、`out/`、`display.mp4`、截圖、假 framebuffer 檔，以及作者本機解壓的 qemu-user／`file` 工具目錄。
+- 維護時重驗紀錄見 `VERSIONS.md` 與本輪 PR 描述。
+
 ## 2026-11-19 — 第 11～19 篇與範例
 
 - 新增 [第 11 篇](docs/lessons/lesson-11.md)（Operator vs Node）、[第 12 篇](docs/lessons/lesson-12.md)（混用 Python 節點）、[第 13 篇](docs/lessons/lesson-13.md)（測試與除錯）、[第 14 篇](docs/lessons/lesson-14.md)（分散式部署）、[第 15 篇](docs/lessons/lesson-15.md)（交叉編譯到 ZYNQ／aarch64）、[第 16 篇](docs/lessons/lesson-16.md)（自訂硬體節點）、[第 17 篇](docs/lessons/lesson-17.md)（AI 推論節點）、[第 18 篇](docs/lessons/lesson-18.md)（效能調校）、[第 19 篇](docs/lessons/lesson-19.md)（綜合專題上）與 `examples/lesson-11/`～`lesson-19/`。

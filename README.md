@@ -9,7 +9,7 @@
 
 ## 這份教材在學什麼
 
-dora-rs 用 **dataflow.yml** 描述節點之間的資料流，節點可用 Rust（以及 Python、C/C++ 等）撰寫。系列規劃 **20 篇**；目前 **第 1～19 篇** 已發布，其餘章節預留擴充位置（不捏造未寫完的內文）。
+dora-rs 用 **dataflow.yml** 描述節點之間的資料流，節點可用 Rust（以及 Python、C/C++ 等）撰寫。系列共 **20 篇**，**已全部發布（第 1～20 篇，系列完結）**。
 
 ---
 
@@ -52,11 +52,11 @@ dora build dataflow.yml && dora run dataflow.yml
 
 ## 推薦閱讀順序
 
-依篇號 1 → 19 閱讀。第 1 篇建立概念；第 2 篇裝 CLI 並跑官方範例；第 3 篇讀 YAML；第 4～5 篇寫 Rust 節點；第 6 篇管理常駐 coordinator／daemon；第 7 篇多節點管線（扇入／扇出）；第 8 篇計時器與背壓；第 9 篇錯誤處理與重啟；第 10 篇零拷貝大資料與 benchmark；第 11 篇 Operator 與 Node；第 12 篇混用 Python 節點；第 13 篇測試與除錯；第 14 篇分散式部署（coordinator／daemon）；第 15 篇交叉編譯到 ZYNQ／aarch64；第 16 篇自訂硬體節點（序列埠、共享記憶體、DMA 概念與模擬）；第 17 篇 AI 推論節點（candle／ONNX Runtime）；第 18 篇效能調校；第 19 篇綜合專題（上）：攝影機 → 辨識 → 結果輸出。
+依篇號 1 → 20 閱讀。第 1 篇建立概念；第 2 篇裝 CLI 並跑官方範例；第 3 篇讀 YAML；第 4～5 篇寫 Rust 節點；第 6 篇管理常駐 coordinator／daemon；第 7 篇多節點管線（扇入／扇出）；第 8 篇計時器與背壓；第 9 篇錯誤處理與重啟；第 10 篇零拷貝大資料與 benchmark；第 11 篇 Operator 與 Node；第 12 篇混用 Python 節點；第 13 篇測試與除錯；第 14 篇分散式部署（coordinator／daemon）；第 15 篇交叉編譯到 ZYNQ／aarch64；第 16 篇自訂硬體節點（序列埠、共享記憶體、DMA 概念與模擬）；第 17 篇 AI 推論節點（candle／ONNX Runtime）；第 18 篇效能調校；第 19 篇綜合專題（上）：攝影機 → 辨識 → 結果輸出；第 20 篇（最終篇）綜合專題（下）：顯示節點、完整管線整合與 ZYNQ 部署收尾。
 
 ---
 
-## 已發布課程（19 篇）
+## 已發布課程（20 篇，系列完結）
 
 1. **第 1 篇：** [dora-rs 是什麼？跟 ROS 2 差在哪](docs/lessons/lesson-01.md)  
    範例：[examples/lesson-01/](examples/lesson-01/)
@@ -96,22 +96,20 @@ dora build dataflow.yml && dora run dataflow.yml
     範例：[examples/lesson-18/](examples/lesson-18/)
 19. **第 19 篇：** [綜合專題（上）——攝影機 → 辨識 → 結果輸出：影像來源節點、candle 辨識節點與延遲量測](docs/lessons/lesson-19.md)  
     範例：[examples/lesson-19/](examples/lesson-19/)
+20. **第 20 篇（最終篇）：** [綜合專題（下）——攝影機 → 辨識 → 顯示：顯示節點、完整管線整合與 ZYNQ 部署收尾](docs/lessons/lesson-20.md)  
+    範例：[examples/lesson-20/](examples/lesson-20/)
 
 ---
 
-## 課程大綱（20 篇規劃）
+## 課程大綱（共 20 篇）
 
-**已發布（可閱讀）：第 1～19 篇** — 見上一節連結。
-
-**尚未發布（第 20 篇）：** 以下**沒有**完整教材，請勿當成已上線內容。
-
-- **第 20 篇：** 尚未發布 — 預計為綜合專題（下），不代表最終標題。
+**已發布（可閱讀）：第 1～20 篇** — 見上一節連結。系列到第 20 篇結束，沒有尚未發布的章節。
 
 ---
 
 ## 如何執行範例
 
-- **第 1、3～19 課：** 在 repo 根目錄 `cd examples/lesson-NN`，依各課「怎麼跑」小節執行 `dora validate` / `dora build` / `dora run` 或生命週期指令。
+- **第 1、3～20 課：** 在 repo 根目錄 `cd examples/lesson-NN`，依各課「怎麼跑」小節執行 `dora validate` / `dora build` / `dora run` 或生命週期指令。
 - **第 2 課：** 必須 `git clone` [dora-rs v1.1.0](https://github.com/dora-rs/dora/tree/v1.1.0) 後在 `examples/rust-dataflow/` 操作；原因見 [examples/lesson-02/README.md](examples/lesson-02/README.md)。
 - **安全提醒：** `dora down --force` 會強制停止 coordinator 上的資料流；**只在確認沒有他人共用服務時** 於自己的練習環境使用（第 6 課詳述）。
 
@@ -127,7 +125,7 @@ dora build dataflow.yml && dora run dataflow.yml
 
 - **繁中教材正文**（`docs/lessons/`、`README.md` 等）：由本 repo 維護者提供之教學內容；**本 repo 未設定整庫開源授權條款**，使用前請依你的用途自行判斷。
 - **dora-rs 官方程式**（第 2 課引用之 `rust-dataflow` 等）：**Apache License 2.0**，見 [NOTICE.md](NOTICE.md) 與上游 [LICENSE](https://github.com/dora-rs/dora/blob/v1.1.0/LICENSE)。
-- **第 1、3～19 課範例**：教學用 Rust 專案，依賴 crates.io 上的 `dora-node-api` 等套件（各套件自有授權）。
+- **第 1、3～20 課範例**：教學用 Rust 專案，依賴 crates.io 上的 `dora-node-api` 等套件（各套件自有授權）。
 
 ---
 
@@ -138,8 +136,8 @@ README.md                 # 本頁（入口）
 VERSIONS.md               # 版本與驗證紀錄
 NOTICE.md                 # 上游授權說明
 CHANGELOG.md              # 本 repo 變更紀錄
-docs/lessons/lesson-01.md … lesson-19.md
-examples/lesson-01/ … lesson-19/   # 第 2 課僅 README + 上游指引
+docs/lessons/lesson-01.md … lesson-20.md
+examples/lesson-01/ … lesson-20/   # 第 2 課僅 README + 上游指引
 scripts/                  # 維護用（處理課文導覽）
 ```
 
