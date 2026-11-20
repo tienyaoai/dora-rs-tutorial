@@ -1,0 +1,28 @@
+[package]
+name = "lesson-20"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+default = []
+# 真的開視窗（X11）：cargo build --release --features window。預設不開，交叉編譯到 ZYNQ 時不需要 X11。
+window = ["dep:minifb"]
+
+[dependencies]
+dora-node-api = "1.1.0"
+eyre = "0.6"
+png = "0.18"
+# detect.rs 直接 `use candle_core::{Device, Module}`：路徑依賴的套件不會把它的依賴「借」給你，要自己列（常見錯誤 1）
+candle-core = "0.11"
+# 沿用第 19 篇的程式庫（合成來源、找框、裁切、統計），它再沿用第 17 篇的 CNN。
+lesson-19 = { path = "../lesson-19" }
+minifb = { version = "0.28", optional = true }
+
+# 第 15 篇的 ZYNQ 小檔案設定：cargo zigbuild --profile zynq --target aarch64-unknown-linux-gnu.2.28
+[profile.zynq]
+inherits = "release"
+opt-level = "s"
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"

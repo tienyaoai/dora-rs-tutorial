@@ -38,8 +38,9 @@ Windows 與 macOS **未**列入原文驗證範圍。
 | 17 | 2026-11-17 | candle 與 ort 兩種 MNIST 推論；離線量測 candle 98.09%；無 GPU、未上 ZYNQ |
 | 18 | 2026-11-18 | release／fast／debug、佇列大小、CPU 綁定量測；共用虛擬機雜訊大；無 `perf`、無 flamegraph |
 | 19 | 2026-11-19 | 合成畫面與 H.264 影片檔兩種來源；真攝影機（V4L2）未驗證；未上 ZYNQ |
+| 20 | 2026-11-20 | 合成來源→mp4／png／ascii、影片檔→假 framebuffer、Xvfb 視窗（`--features window`）、aarch64 交叉編譯＋qemu-user 實跑；無真攝影機、無 `/dev/fb0`、無 ZYNQ 板；FPGA 加速僅為說明 |
 
-完整終端機 log **未**納入 repo（含第 6 課課文曾提及的 `run-lifecycle.log`、第 7～9 課及第 11～19 課作者本機 `run-*.log`、`run/` 內的日誌與 `out/` session 紀錄）。
+完整終端機 log **未**納入 repo（含第 6 課課文曾提及的 `run-lifecycle.log`、第 7～9 課及第 11～20 課作者本機 `run-*.log`、`run/` 內的日誌與 `out/` session 紀錄）。
 
 ---
 
@@ -130,6 +131,22 @@ Windows 與 macOS **未**實測。第 11～19 課的完整執行日誌、`data/`
 
 ---
 
+## 本 repo 維護時重驗（2026-11-20，第 20 課同步，系列完結）
+
+環境：Linux x86_64（8 核虛擬機，無 GPU、無攝影機），Rust **1.99.1**（stable），dora-cli **1.1.0**。
+
+| 檢查 | 結果 |
+|------|------|
+| `python3 scripts/check-markdown-nav.py` | **通過**（43 個 `.md`） |
+| `cargo check --all-targets` @ `examples/lesson-20`（預設 feature 與 `--features window`） | **通過**（Rust 1.99.1；`Cargo.lock` 與作者原檔相同） |
+| `dora validate` @ `examples/lesson-20/*.yml`（5 份） | **通過** |
+| `bash -n` @ `run-demo.sh`、`run-aarch64.sh` | **通過** |
+| `dora run`／交叉編譯／qemu／Xvfb 視窗／真 framebuffer／真攝影機 | **未執行**（依課文與作者紀錄；請自行驗證） |
+
+Windows 與 macOS **未**實測。第 20 課的完整執行日誌、`display.mp4`、截圖、假 framebuffer 檔未納入本 repo。
+
+---
+
 ## 內容來源包（建檔用）
 
-公開內容最初整理自內部來源 zip（SHA256 `8e8a9cf6431e60a32d43221dbf1badb6ea5b96e3cfb6b411d52a7de67c4fb5a8`）。第 7 課來自 `dora-rs-lesson-07-source-20261107.zip`（SHA256 `ad4fc51d192868f3970cb408388831027277582ed7bfc97aecda337dcc45e02f`）。第 8～9 課來自 `dora-lessons-08-09-source.zip`（SHA256 `59342fe7326c18e1d0734d9d365f002646895f21c251466316d78f798a01bfff`）。第 10 課來自 `lesson10-upload.tar.gz`（SHA256 `b1e8972baa2d111698ab53108f35ac60809b3470d4046271bbdf370c9c868388`）。zip、移轉清單與完整 raw log**未**納入本 repo。 第 11～19 課來自作者的本機教材目錄（`dora-tutorial/`、`dora-poc/lessons/`），不含 `target/`、日誌與大型產生物。
+公開內容最初整理自內部來源 zip（SHA256 `8e8a9cf6431e60a32d43221dbf1badb6ea5b96e3cfb6b411d52a7de67c4fb5a8`）。第 7 課來自 `dora-rs-lesson-07-source-20261107.zip`（SHA256 `ad4fc51d192868f3970cb408388831027277582ed7bfc97aecda337dcc45e02f`）。第 8～9 課來自 `dora-lessons-08-09-source.zip`（SHA256 `59342fe7326c18e1d0734d9d365f002646895f21c251466316d78f798a01bfff`）。第 10 課來自 `lesson10-upload.tar.gz`（SHA256 `b1e8972baa2d111698ab53108f35ac60809b3470d4046271bbdf370c9c868388`）。zip、移轉清單與完整 raw log**未**納入本 repo。 第 11～20 課來自作者的本機教材目錄（`dora-tutorial/`、`dora-poc/lessons/`），不含 `target/`、日誌與大型產生物。

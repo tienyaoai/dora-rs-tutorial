@@ -35,9 +35,10 @@ NEXT_HREF = {
     16: "lesson-17.md",
     17: "lesson-18.md",
     18: "lesson-19.md",
+    19: "lesson-20.md",
 }
 
-LAST_PUBLISHED = 19
+LAST_PUBLISHED = 20
 
 
 def nav_block(n: int) -> str:
@@ -46,6 +47,8 @@ def nav_block(n: int) -> str:
         lines.append(f"- 上一課：[第 {n - 1} 篇](lesson-{n - 1:02d}.md)")
     if n < LAST_PUBLISHED:
         lines.append(f"- 下一課：[第 {n + 1} 篇 →]({NEXT_HREF[n]})")
+    elif n == 20:
+        lines.append("- 下一課：無——第 20 篇是**最終篇**，系列到此結束")
     else:
         lines.append(
             f"- 下一課：第 {n + 1} 篇**尚未發布**（僅規劃；見"
